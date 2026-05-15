@@ -598,6 +598,82 @@
                 font-size: 1.7rem;
             }
         }
+
+        /* ----- MOBILE RESPONSIVENESS PATCH ----- */
+        @media (max-width: 1199px) {
+            .hero-title {
+                font-size: 5rem;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .hero-title {
+                font-size: 4rem;
+                line-height: 1.1;
+            }
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .innovation-split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .stat-num {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 3.5rem;
+            }
+            .hero-title {
+                font-size: clamp(2.2rem, 10vw, 3.5rem);
+                line-height: 1.1;
+                margin-bottom: 1.5rem;
+                letter-spacing: -1px;
+            }
+            .hero-subtitle {
+                font-size: 0.75rem;
+                letter-spacing: 4px;
+                margin-bottom: 1rem;
+            }
+            .stat-num {
+                font-size: 3rem;
+            }
+            .marquee-content {
+                font-size: 2.5rem;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .bento-1, .bento-2, .bento-3, .bento-4, .bento-5 {
+                grid-column: span 1 !important;
+            }
+            .fleet-card {
+                min-height: 380px;
+            }
+            .home-hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 100px 0 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .stat-num {
+                font-size: 2.5rem;
+            }
+            .bento-item {
+                padding: 1.5rem;
+            }
+            .fleet-content h3 {
+                font-size: 1.5rem;
+            }
+        }
         /* ----- HOME PAGE UNIQUE DESIGN SYSTEM ----- */
         .home-section {
             padding: var(--section-padding) 0;
@@ -626,7 +702,7 @@
             font-size: var(--fluid-h1);
             font-weight: 300;
             font-style: italic;
-            line-height: 0.8;
+            line-height: 1.1;
             margin-bottom: 2.5rem;
             background: linear-gradient(to bottom, #fff 40%, var(--accent) 100%);
             background-clip: text;
