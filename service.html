@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Velocity | Premium Navbar & Footer Suite</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+    <!-- Google Fonts & Font Awesome 6 (single source) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- RESET & GLOBAL DESIGN SYSTEM ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        :root {
+            --bg-primary: #f5f7fc;
+            --bg-secondary: #ffffff;
+            --surface-glass: rgba(245, 247, 252, 0.8);
+            --card-bg: #ffffff;
+            --text-primary: #1e2a3a;
+            --text-secondary: #4a5b6e;
+            --accent: #ff6a1a;
+            --accent-hover: #ff8539;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            --transition-smooth: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            --base-font: 1.125rem;
+            --container-width: min(92%, 1400px);
+            --section-padding: clamp(4rem, 8vw, 8rem);
+            --fluid-h1: clamp(3rem, 10vw, 7rem);
+            --fluid-h2: clamp(2rem, 6vw, 4rem);
+            --fluid-p: clamp(1rem, 1.2vw, 1.25rem);
+            --serif-font: 'Cormorant Garamond', serif;
+        }
+
+        body.dark-mode {
+            --bg-primary: #0a0c10;
+            --bg-secondary: #111318;
+            --surface-glass: rgba(15, 17, 22, 0.7);
+            --card-bg: #14171f;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b3c0;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: var(--base-font);
+            line-height: 1.5;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background 0.3s ease, color 0.2s ease;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* ----- STICKY GLASS NAVBAR (core component) ----- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(18px);
+            background: var(--surface-glass);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-container {
+            max-width: 1440px;
+            width: 92%;
+            margin: 0 auto;
+            padding: 0.6rem 0;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .logo-area {
+            justify-self: start;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .logo-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: var(--transition-smooth);
+        }
+        .brand-name {
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #1e2a3a, var(--accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        body.dark-mode .brand-name {
+            background: linear-gradient(135deg, #fff 30%, var(--accent) 80%);
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        /* Desktop Navigation — clean & minimal */
+        .nav-links {
+            justify-self: center;
+            display: flex;
+            gap: 0.3rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-primary);
+            border-radius: 40px;
+            transition: var(--transition-smooth);
+            background: transparent;
+        }
+        .nav-links a:hover {
+            background: rgba(255, 106, 26, 0.15);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .nav-links a.active {
+            background: var(--accent);
+            color: #0a0c10 !important;
+        }
+
+        /* Dropdown (Home 1 / Home 2) + invisible bridge */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 0;
+            width: 100%;
+            height: 24px;
+            background: transparent;
+            pointer-events: auto;
+            z-index: 101;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0px;
+            background: var(--surface-glass);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 0.6rem 0;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.2s ease;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 18px 32px rgba(0, 0, 0, 0.4);
+            z-index: 200;
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(6px);
+        }
+        .dropdown-menu li {
+            list-style: none;
+        }
+        .dropdown-menu a {
+            display: flex;
+            padding: 0.6rem 1.4rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            border-radius: 0;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(255, 106, 26, 0.2);
+            transform: translateX(4px);
+        }
+        body[dir="rtl"] .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+        body[dir="rtl"] .dropdown-menu a:hover {
+            transform: translateX(-4px);
+        }
+
+        /* Right side actions */
+        .nav-actions {
+            justify-self: end;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .icon-btn, .rtl-btn, .login-btn, .menu-toggle {
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.45rem 1rem;
+            border-radius: 40px;
+            transition: var(--transition-smooth);
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+        .login-btn {
+            background: rgba(255, 106, 26, 0.15);
+            border: 1px solid rgba(255, 106, 26, 0.4);
+        }
+        .login-btn:hover, .icon-btn:hover, .rtl-btn:hover {
+            background: var(--accent);
+            color: #0a0c10;
+            transform: scale(1.02);
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            background: rgba(255,106,26,0.12);
+            padding: 0.3rem 0.9rem;
+        }
+
+        /* ----- MOBILE SLIDE MENU (luxury overlay) ----- */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(6px);
+            z-index: 1200;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .mobile-nav-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 340px;
+            max-width: 86vw;
+            height: 100%;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(28px);
+            box-shadow: -12px 0 40px rgba(0,0,0,0.5);
+            z-index: 1300;
+            transition: right 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            border-left: 3px solid var(--accent);
+            overflow-y: auto;
+        }
+        body[dir="rtl"] .mobile-menu-panel {
+            right: auto;
+            left: -100%;
+            border-left: none;
+            border-right: 3px solid var(--accent);
+        }
+        body[dir="rtl"] .mobile-menu-panel.open {
+            left: 0;
+            right: auto;
+        }
+        .mobile-menu-panel.open {
+            right: 0;
+        }
+        .mobile-close {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--accent);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .mobile-nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .mobile-nav-list li a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            padding: 0.7rem 1.2rem;
+            border-radius: 12px;
+            transition: 0.2s;
+        }
+        .mobile-nav-list li a.active {
+            background: rgba(255, 106, 26, 0.15);
+            color: var(--accent) !important;
+            border-left: 4px solid var(--accent);
+        }
+        body[dir="rtl"] .mobile-nav-list li a.active {
+            border-left: none;
+            border-right: 4px solid var(--accent);
+        }
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.4rem 0;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+        }
+        .mobile-caret {
+            font-size: 0.75rem;
+            transition: transform 0.25s ease;
+            color: var(--accent);
+        }
+        .mobile-submenu {
+            list-style: none;
+            padding-left: 1.2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.32s ease-out;
+        }
+        .mobile-submenu.show {
+            max-height: 200px;
+        }
+        .mobile-submenu li a {
+            font-size: 1rem;
+            padding: 0.6rem 0;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        .mobile-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.5rem;
+        }
+        .mobile-action-btn {
+            background: rgba(255, 106, 26, 0.1);
+            border: 1px solid rgba(255, 106, 26, 0.3);
+            padding: 0.8rem 1rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .mobile-action-btn:hover {
+            background: var(--accent);
+            color: #0a0c10;
+            transform: scale(1.02);
+        }
+
+        /* Demo hero content */
+        .demo-content {
+            min-height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 1.5rem;
+            background: radial-gradient(circle at 20% 30%, rgba(255,106,26,0.04) 0%, transparent 70%);
+        }
+        .demo-card {
+            max-width: 720px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2rem 2rem 2.2rem;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow);
+        }
+        .demo-card h2 {
+            font-size: 2.1rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .demo-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.8rem;
+        }
+        .demo-badge {
+            display: inline-block;
+            background: var(--accent);
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        /* ----- PREMIUM FOOTER (fully integrated) ----- */
+        .velocity-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-light);
+            padding: 3rem 2rem 1.8rem;
+            margin-top: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer-container {
+            max-width: 1280px;
+            width: 92%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2.5rem;
+        }
+        .footer-col h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.2px;
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+        }
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+        body[dir="rtl"] .footer-col h4:after {
+            left: auto;
+            right: 0;
+        }
+        .footer-col p, .footer-col ul {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-col ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        body[dir="rtl"] .footer-col ul li a:hover {
+            padding-left: 0;
+            padding-right: 5px;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 106, 26, 0.15);
+            border-radius: 50%;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            background: var(--accent);
+            color: #0a0c10;
+            transform: translateY(-3px);
+        }
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border-radius: 60px;
+            border: 1px solid var(--border-light);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: inherit;
+            outline: none;
+            transition: 0.2s;
+        }
+        .newsletter-form input:focus {
+            border-color: var(--accent);
+        }
+        .newsletter-form button {
+            background: var(--accent);
+            border: none;
+            padding: 0.7rem 1.3rem;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #0a0c10;
+        }
+        .newsletter-form button:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        /* --- MOBILE & TABLET OPTIMIZATIONS (ALL SCREENS) --- */
+        @media (max-width: 1024px) {
+            .nav-container { display: flex; justify-content: space-between; }
+            .nav-links, .nav-actions .icon-btn, .nav-actions .rtl-btn, .nav-actions .login-btn { display: none; }
+            .menu-toggle { display: flex; }
+            
+            .svc-section { padding: 80px 1.5rem; }
+            .svc-hero { height: 70vh; }
+            .fac-grid { grid-template-columns: 1fr; }
+            .fac-item { height: 300px; }
+            .svc-form { padding: 2.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .svc-hero-title { font-size: clamp(2.5rem, 10vw, 4.5rem); letter-spacing: -1px; }
+            .svc-hero-badge { font-size: 0.7rem; padding: 0.4rem 1rem; }
+            
+            .supp-strip { flex-direction: column; text-align: center; gap: 2rem; padding: 4rem 2rem; }
+            .supp-strip h2 { font-size: 1.8rem; }
+            
+            .process-steps { flex-direction: column; gap: 3rem; }
+            .step-item:not(:last-child)::after { display: none; }
+            
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .footer-col h4:after { left: 50%; transform: translateX(-50%); }
+        }
+
+        @media (max-width: 480px) {
+            .brand-name { font-size: 1.2rem; }
+            .svc-section { padding: 60px 1rem; }
+            .svc-form { padding: 1.5rem; }
+            .spec-card { padding: 2rem 1.5rem; }
+            .step-num { width: 50px; height: 50px; font-size: 1.2rem; }
+        }
+        /* ----- SERVICE PAGE: TECHNICAL PRECISION THEME ----- */
+        .svc-section {
+            padding: var(--section-padding) 0;
+            position: relative;
+        }
+
+        .svc-container {
+            max-width: 1300px;
+            width: 92%;
+            margin: 0 auto;
+        }
+
+        /* 1. Immersive Hero */
+        .svc-hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10,12,16,0.6), rgba(10,12,16,0.9)), url('https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?q=80&w=1974&auto=format&fit=crop') center/cover no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .svc-hero-title {
+            font-family: var(--serif-font);
+            font-size: var(--fluid-h1);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 0.8;
+            color: #fff;
+        }
+
+        .svc-hero-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* 2. Specializations Grid */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .spec-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            padding: 3rem 2rem;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .spec-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+        }
+
+        .spec-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .spec-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* 3. The Process - Steps */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .step-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* 4. Facilities Grid */
+        .fac-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .fac-item {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .fac-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff;
+        }
+
+        /* 6. Support Strip */
+        .supp-strip {
+            background: var(--accent);
+            color: #000;
+            padding: 6rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 20px;
+        }
+
+        /* 7. Case Studies */
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .case-card {
+            border-left: 4px solid var(--accent);
+            padding-left: 2rem;
+        }
+
+        /* 8. Inquiry Form */
+        .svc-form {
+            background: var(--bg-secondary);
+            padding: clamp(2rem, 5vw, 4rem);
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .svc-form input, .svc-form select, .svc-form textarea {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            color: var(--text-primary);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            outline: none;
+        }
+
+        .svc-form button {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-weight: 800;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            width: 100%;
+        }
+
+        /* Dark Mode Fixes */
+        body.dark-mode .svc-hero {
+            background: linear-gradient(rgba(10,12,16,0.6), rgba(10,12,16,0.9)), url('https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?q=80&w=1974&auto=format&fit=crop') center/cover no-repeat;
+        }
+        body.dark-mode .svc-hero-title {
+            color: #fff;
+        }
+        body.dark-mode .spec-card {
+            background: var(--bg-secondary);
+        }
+        body.dark-mode .spec-card h3,
+        body.dark-mode .spec-card p {
+            color: var(--text-primary);
+        }
+        body.dark-mode .fac-overlay {
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff;
+        }
+        body.light-mode .step-item h4 {
+            color: var(--text-primary);
+        }
+        body.light-mode .svc-form {
+            background: var(--bg-secondary);
+            border-color: rgba(0,0,0,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+        }
+        body.light-mode .svc-form input, 
+        body.light-mode .svc-form select, 
+        body.light-mode .svc-form textarea {
+            background: #fff;
+            border-color: #ddd;
+            color: var(--text-primary);
+        }
+        body.light-mode .case-card h3 {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 1024px) {
+            section, .container, .spec-card, .case-card, .fac-item, .svc-form, .step-item, .card, .box, div, p, h1, h2, h3, h4, h5, h6, a, span, button:not(.icon-btn):not(.rtl-btn):not(.menu-toggle) {
+                box-sizing: border-box !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                white-space: normal !important;
+            }
+            .spec-card, .case-card, .svc-form {
+                overflow: hidden !important;
+                padding: 20px !important;
+            }
+            .svc-section { overflow-x: hidden; box-sizing: border-box; max-width: 100%; }
+            .svc-container { box-sizing: border-box; max-width: 100%; padding: 0 1rem; }
+            .svc-hero { height: 70vh; box-sizing: border-box; max-width: 100%; padding: 0 1rem; }
+            .svc-hero-title { font-size: clamp(3rem, 10vw, 5rem); }
+            .fac-grid { grid-template-columns: 1fr; gap: 2rem; box-sizing: border-box; max-width: 100%; }
+            .fac-item { height: 350px; box-sizing: border-box; max-width: 100%; }
+            .process-steps { justify-content: center; box-sizing: border-box; max-width: 100%; gap: 2rem; }
+            .step-item { flex: 1 1 200px; box-sizing: border-box; max-width: 100%; }
+            .spec-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; box-sizing: border-box; max-width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .svc-section { padding: 60px 1.2rem; box-sizing: border-box; max-width: 100%; }
+            .svc-hero-title { font-size: clamp(2.5rem, 8vw, 3.5rem); }
+            .spec-grid { grid-template-columns: 1fr; }
+            .spec-card { padding: 2.5rem 1.5rem; box-sizing: border-box; max-width: 100%; }
+            .supp-strip { flex-direction: column; text-align: center; gap: 2rem; padding: 4rem 1.5rem; box-sizing: border-box; max-width: 100%; }
+            .svc-form { padding: 2.5rem 1.5rem; box-sizing: border-box; max-width: 100%; width: 100%; }
+            .case-grid { grid-template-columns: 1fr; gap: 2rem; box-sizing: border-box; max-width: 100%; }
+            .case-card { padding-left: 1.5rem; box-sizing: border-box; max-width: 100%; }
+            .svc-form button { box-sizing: border-box; max-width: 100%; width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .svc-hero-title { font-size: clamp(2rem, 8vw, 2.8rem); }
+            .supp-strip h2 { font-size: 1.6rem; }
+            .svc-form input, .svc-form select, .svc-form textarea { padding: 1rem; }
+            .svc-form button { padding: 1rem; font-size: 0.95rem; }
+            .fac-overlay { padding: 1.5rem; }
+            .step-num { width: 50px; height: 50px; font-size: 1.2rem; }
+        }
+
+        @media (max-width: 320px) {
+            .svc-hero-title { font-size: 1.8rem; }
+            .spec-card { padding: 2rem 1.2rem; }
+            .supp-strip { padding: 3rem 1.2rem; }
+            .supp-strip h2 { font-size: 1.4rem; }
+            .svc-form { padding: 1.8rem 1rem; }
+        }</style>
+
+</head>
+<body dir="ltr">
+    <!-- ==================== VELOCITY NAVBAR (GLASS, STICKY) ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-area">
+                <i class="fas fa-car-side logo-icon"></i>
+                <span class="brand-name">VELOCITY</span>
+            </a>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html" class="home-drop-link">Home 1</a></li>
+                        <li><a href="home2.html" class="home-drop-link">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html"> About</a></li>
+                <li><a href="service.html"> Services</a></li>
+                <li><a href="pricing.html"> Pricing</a></li>
+                <li><a href="gallery.html"> Gallery</a></li>
+                <li><a href="booking.html"> Booking</a></li>
+                <li><a href="contact.html"> Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="icon-btn" id="darkModeToggle" aria-label="Dark mode"><i class="fas fa-moon"></i></button>
+                <button class="rtl-btn" id="rtlToggle" aria-label="RTL"><i class="fas fa-exchange-alt"></i> RTL</button>
+                <button class="login-btn" id="loginBtn"><i class="fas fa-user-circle"></i> <span>Login</span></button>
+                <button class="menu-toggle" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Slide Out Panel (clean & accessible) -->
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu-panel" id="mobilePanel">
+        <button class="mobile-close" id="closeMobileMenu"><i class="fas fa-times-circle"></i></button>
+        <ul class="mobile-nav-list">
+            <li class="mobile-dropdown-parent">
+                <div class="mobile-dropdown-toggle" id="mobileHomeToggle">
+                    <span>Home</span> 
+                    <span class="mobile-caret">▼</span>
+                </div>
+                <ul class="mobile-submenu" id="mobileHomeSubmenu">
+                    <li><a href="index.html" class="mobile-home-link">Home 1</a></li>
+                    <li><a href="home2.html" class="mobile-home-link">Home 2</a></li>
+                </ul>
+            </li>
+            <li><a href="about.html"> About</a></li>
+            <li><a href="service.html"> Services</a></li>
+            <li><a href="pricing.html"> Pricing</a></li>
+            <li><a href="gallery.html"> Gallery</a></li>
+            <li><a href="booking.html"> Booking</a></li>
+            <li><a href="contact.html"> Contact</a></li>
+        </ul>
+        <div class="mobile-actions">
+            <button class="mobile-action-btn" id="mobileDarkToggle"><i class="fas fa-moon"></i> Dark Mode</button>
+            <button class="mobile-action-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i> RTL Layout</button>
+            <button class="mobile-action-btn" id="mobileLoginBtn"><i class="fas fa-user-circle"></i> Login</button>
+        </div>
+        <div style="margin-top: auto; padding-top: 2rem;"><small style="color: var(--accent); letter-spacing: 0.3px;">© Velocity Motors</small></div>
+    </div>
+
+    <!-- ==================== SERVICE PAGE: THE PRECISION LAB ==================== -->
+
+    <!-- 1. TECH HERO -->
+    <section class="svc-hero">
+        <div class="svc-container">
+            <span class="svc-hero-badge">Aero-Engineering Lab</span>
+            <h1 class="svc-hero-title">Technical<br>Superiority</h1>
+            <p style="margin-top: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; color: var(--text-secondary);">Redefining performance through computational fluid dynamics and bespoke mechanical refinement.</p>
+        </div>
+    </section>
+
+    <!-- 2. SPECIALIZATIONS -->
+    <section class="svc-section">
+        <div class="svc-container">
+            <div style="text-align: center;">
+                <h2 style="font-size: 3rem; text-transform: uppercase;">Core Competencies</h2>
+            </div>
+            <div class="spec-grid">
+                <div class="spec-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>ECU Optimization</h3>
+                    <p style="color: var(--text-secondary);">Custom fuel mapping and ignition timing for maximum efficiency and power output.</p>
+                </div>
+                <div class="spec-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Aero-Refinement</h3>
+                    <p style="color: var(--text-secondary);">Wind tunnel validation and carbon fiber aerodynamic package integration.</p>
+                </div>
+                <div class="spec-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Mechanical Bespoke</h3>
+                    <p style="color: var(--text-secondary);">Complete drivetrain overhauls using aerospace-grade components and precision tools.</p>
+                </div>
+                <div class="spec-card">
+                    <i class="fas fa-satellite"></i>
+                    <h3>Telemetry Suite</h3>
+                    <p style="color: var(--text-secondary);">Real-time data monitoring and remote diagnostics via our proprietary satellite link.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. THE PROCESS -->
+    <section class="svc-section" style="background: var(--bg-secondary);">
+        <div class="svc-container">
+            <div style="text-align: center;">
+                <h2 style="font-size: 2.5rem;">The Engineering Workflow</h2>
+            </div>
+            <div class="process-steps">
+                <div class="step-item">
+                    <div class="step-num">01</div>
+                    <h4>Diagnostic</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Full digital scan and physical inspection.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">02</div>
+                    <h4>Simulation</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">CFD and digital stress testing models.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">03</div>
+                    <h4>Refinement</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Hand-crafted implementation of upgrades.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">04</div>
+                    <h4>Validation</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Track testing and final calibration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. FACILITIES -->
+    <section class="svc-section">
+        <div class="svc-container">
+            <div style="margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem;">Global Centers</h2>
+            </div>
+            <div class="fac-grid">
+                <div class="fac-item" style="background-image: url('images/showroom.png');">
+                    <div class="fac-overlay">
+                        <h3>Monaco Refinement Center</h3>
+                        <p>Specializing in classic restoration and luxury grand tourer tuning.</p>
+                    </div>
+                </div>
+                <div class="fac-item" style="background-image: url('images/engineering.png');">
+                    <div class="fac-overlay">
+                        <h3>Dubai Performance Lab</h3>
+                        <p>Our flagship facility for hypercar development and extreme testing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SUPPORT STRIP -->
+    <section class="svc-container" style="margin-top: 5rem; margin-bottom: 5rem;">
+        <div class="supp-strip">
+            <div>
+                <h2 style="font-size: 2.5rem; line-height: 1;">Global Concierge<br>Support 24/7</h2>
+                <p style="margin-top: 1rem; opacity: 0.8;">No matter where you are, our engineers are a click away.</p>
+            </div>
+            <a href="#" class="login-btn" style="background: #000; color: #fff; border: none; padding: 1.5rem 3rem;">Connect to Lab</a>
+        </div>
+    </section>
+
+    <!-- 7. CASE STUDIES -->
+    <section class="svc-section" style="background: var(--bg-secondary);">
+        <div class="svc-container">
+            <div style="margin-bottom: 4rem;">
+                <h2 style="font-size: 2.5rem;">Laboratory Journal</h2>
+            </div>
+            <div class="case-grid">
+                <div class="case-card">
+                    <h3>The 2.0s Challenge</h3>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">How we reduced the 0-100 time of the V1 model by 0.2s through thermal management and traction software logic.</p>
+                    <a href="#" style="color: var(--accent); display: block; margin-top: 1rem; text-decoration: none; font-weight: 700;">Read Whitepaper →</a>
+                </div>
+                <div class="case-card">
+                    <h3>Carbon Rebirth</h3>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">Restoring a classic prototype using modern 3D printing and original 1980s schematics. A bridge between eras.</p>
+                    <a href="#" style="color: var(--accent); display: block; margin-top: 1rem; text-decoration: none; font-weight: 700;">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. INQUIRY FORM -->
+    <section class="svc-section">
+        <div class="svc-container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 3rem;">Inquiry Submission</h2>
+                <p style="color: var(--text-secondary);">Begin your car's transformation journey.</p>
+            </div>
+            <form class="svc-form">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+                <select>
+                    <option>Select Service</option>
+                    <option>ECU Tuning</option>
+                    <option>Aerodynamics</option>
+                    <option>Full Restoration</option>
+                    <option>Maintenance</option>
+                </select>
+                <textarea rows="5" placeholder="Tell us about your machine..."></textarea>
+                <button type="submit">Initialize Request</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- ==================== FOOTER (integrated, theme-aware) ==================== -->
+    <footer class="velocity-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="logo-area" style="margin-bottom: 1.5rem;">
+                    <i class="fas fa-car-side logo-icon" style="color: var(--accent); font-size: 1.8rem; margin-right: 0.8rem;"></i>
+                    <span class="brand-name" style="font-weight: 900; letter-spacing: 2px; font-size: 1.5rem;">VELOCITY</span>
+                </div>
+                <p>Redefining automotive passion with cutting-edge engineering and bespoke concierge services. Drive the extraordinary.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Warranty & Care</a></li>
+                    <li><a href="#">Financing</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p>Get exclusive offers and new model alerts.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email address" id="newsletterEmailFooter">
+                    <button id="subscribeNewsletterBtn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 VELOCITY — engineered for enthusiasts. All rights reserved. | <span style="color: var(--accent);">Orange adrenaline since 2005</span></p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // DOM elements
+            const body = document.body;
+            const darkToggleDesktop = document.getElementById('darkModeToggle');
+            const rtlToggleDesktop = document.getElementById('rtlToggle');
+            const loginBtnDesktop = document.getElementById('loginBtn');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobilePanel = document.getElementById('mobilePanel');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const closeMobileBtn = document.getElementById('closeMobileMenu');
+            const mobileHomeToggle = document.getElementById('mobileHomeToggle');
+            const mobileSubmenu = document.getElementById('mobileHomeSubmenu');
+            const mobileDarkToggle = document.getElementById('mobileDarkToggle');
+            const mobileRtlToggle = document.getElementById('mobileRtlToggle');
+            const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+            const subscribeBtn = document.getElementById('subscribeNewsletterBtn');
+
+            // ----- Helper: close mobile panel -----
+            function closeMobileMenuPanel() {
+                if (!mobilePanel || !mobileOverlay) return;
+                mobilePanel.classList.remove('open');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // ----- 1. Dark Mode Toggle (Desktop & Mobile sync + icon swap)-----
+            function updateDarkIcons(isDark) {
+                const desktopIcon = darkToggleDesktop?.querySelector('i');
+                const mobileIcon = mobileDarkToggle?.querySelector('i');
+                if (desktopIcon) {
+                    desktopIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                }
+                if (mobileIcon) {
+                    mobileIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                }
+            }
+
+            function toggleDarkMode() {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                updateDarkIcons(isDark);
+                localStorage.setItem('velocity-theme', isDark ? 'dark' : 'light');
+            }
+            if (darkToggleDesktop) darkToggleDesktop.addEventListener('click', toggleDarkMode);
+            if (mobileDarkToggle) mobileDarkToggle.addEventListener('click', toggleDarkMode);
+
+            // Init Dark Mode: Always default to light mode on page load as requested
+            updateDarkIcons(false);
+
+            // ----- 2. RTL Toggle (preserves layout, closes mobile)-----
+            function toggleRTL() {
+                const currentDir = body.getAttribute('dir') || 'ltr';
+                const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                body.setAttribute('dir', newDir);
+                document.documentElement.setAttribute('dir', newDir);
+                closeMobileMenuPanel();
+            }
+            if (rtlToggleDesktop) rtlToggleDesktop.addEventListener('click', toggleRTL);
+            if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+
+            // ----- 3. Login demo action-----
+            function handleLogin() {
+                window.location.href = 'login.html';
+            }
+            if (loginBtnDesktop) loginBtnDesktop.addEventListener('click', handleLogin);
+            if (mobileLoginBtn) mobileLoginBtn.addEventListener('click', handleLogin);
+
+            // ----- 4. Mobile menu controls-----
+            function openMobileMenu() {
+                if (!mobilePanel || !mobileOverlay) return;
+                mobilePanel.classList.add('open');
+                mobileOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+            if (closeMobileBtn) closeMobileBtn.addEventListener('click', closeMobileMenuPanel);
+            if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenuPanel);
+
+            // ----- 5. Mobile submenu toggle (Home dropdown)-----
+            if (mobileHomeToggle && mobileSubmenu) {
+                mobileHomeToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mobileSubmenu.classList.toggle('show');
+                    const caretSpan = mobileHomeToggle.querySelector('.mobile-caret');
+                    if (caretSpan) {
+                        caretSpan.style.transform = mobileSubmenu.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    }
+                });
+            }
+
+            // ----- 6. Prevent any navbar/footer demo hash navigation & close mobile if needed -----
+            const allInternalLinks = document.querySelectorAll('.nav-links a, .dropdown-menu a, .mobile-nav-list a, .mobile-submenu a, .footer-col a');
+            allInternalLinks.forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    const href = anchor.getAttribute('href');
+                    if (href === '#' || href === '' || href.startsWith('#')) {
+                        e.preventDefault();
+                        closeMobileMenuPanel();
+                        return false;
+                    }
+                    closeMobileMenuPanel();
+                });
+            });
+
+            // Special handling for newsletter subscription
+            if (subscribeBtn) {
+                subscribeBtn.addEventListener('click', () => {
+                    const emailInput = document.getElementById('newsletterEmailFooter');
+                    const email = emailInput ? emailInput.value.trim() : '';
+                    if (email && email.includes('@') && email.includes('.')) {
+                        alert(`✨ Thanks for subscribing! ${email} will receive Velocity highlights.`);
+                        emailInput.value = '';
+                    } else {
+                        alert('Please enter a valid email address to subscribe.');
+                    }
+                });
+            }
+
+            // Allow navigation for home drop links and mobile home links
+            document.querySelectorAll('.home-drop-link, .mobile-home-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMobileMenuPanel();
+                });
+            });
+
+            // Close mobile panel when window resizes past desktop breakpoint
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024) {
+                    closeMobileMenuPanel();
+                }
+            });
+
+            // Ensure any stray hash navigation is suppressed
+            window.addEventListener('hashchange', (e) => {
+                if (window.location.hash === '#') {
+                    e.preventDefault();
+                    history.pushState("", document.title, window.location.pathname);
+                }
+            });
+            // ----- Active Link Handler -----
+            function setActiveLinks() {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                const allNavLinks = document.querySelectorAll('.nav-links a, .mobile-nav-list a, .dropdown-menu a, .mobile-submenu a');
+                
+                allNavLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('active');
+                        
+                        const dropdown = link.closest('.dropdown');
+                        if (dropdown) {
+                            const parentLink = dropdown.querySelector('a');
+                            if (parentLink) parentLink.classList.add('active');
+                        }
+                        
+                        const mobileSub = link.closest('.mobile-submenu');
+                        if (mobileSub) {
+                            const toggle = mobileSub.previousElementSibling;
+                            if (toggle) toggle.classList.add('active');
+                        }
+                    }
+                });
+            }
+            setActiveLinks();
+        })();
+    </script>
+</body>
+</html>

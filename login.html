@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Login | Velocity Premium Motors</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+    <!-- Google Fonts & Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- RESET & GLOBAL DESIGN (Refined static premium theme) ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        :root {
+            --bg-primary: #f5f7fc;
+            --surface-glass: rgba(255, 255, 255, 0.85);
+            --card-bg: #ffffff;
+            --text-primary: #1e2a3a;
+            --text-secondary: #4a5b6e;
+            --accent: #ff6a1a;
+            --accent-hover: #ff8539;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --transition-smooth: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            --base-font: 1rem;
+            --fluid-h1: clamp(1.8rem, 5vw, 2.5rem);
+            --fluid-p: clamp(0.9rem, 1vw, 1rem);
+        }
+
+        body.dark-mode {
+            --bg-primary: #0a0c10;
+            --surface-glass: rgba(15, 17, 22, 0.82);
+            --card-bg: #14171f;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b3c0;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.5;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            transition: background 0.3s ease, color 0.2s ease;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        /* ----- STICKY GLASS NAVBAR (Minimal for Login) ----- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: var(--surface-glass);
+            border-bottom: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-container {
+            max-width: 1440px;
+            width: 92%;
+            margin: 0 auto;
+            padding: 0.8rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo-icon {
+            font-size: 1.6rem;
+            color: var(--accent);
+        }
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #1e2a3a, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body.dark-mode .brand-name {
+            background: linear-gradient(135deg, #fff 30%, var(--accent) 80%);
+            -webkit-background-clip: text;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-btn, .rtl-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.55rem 1.1rem;
+            border-radius: 40px;
+            transition: var(--transition-smooth);
+            font-weight: 600;
+        }
+        .icon-btn:hover, .rtl-btn:hover {
+            background: var(--accent);
+            color: #0a0c10;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        body.dark-mode .icon-btn, body.dark-mode .rtl-btn {
+            background: rgba(255, 255, 255, 0.05);
+            color: #f0f0f0;
+        }
+
+        /* ----- LOGIN HERO SECTION (Full screen immersive) ----- */
+        .login-hero {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem; /* Reduced top padding for locked view */
+            background: linear-gradient(rgba(10, 12, 16, 0.85), rgba(10, 12, 16, 0.7)), 
+                        url('images/showroom.png') center/cover no-repeat fixed;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        body.light-mode .login-hero {
+            background: linear-gradient(rgba(245, 247, 252, 0.85), rgba(245, 247, 252, 0.7)), 
+                        url('images/showroom.png') center/cover no-repeat fixed;
+        }
+
+        body.light-mode .form-control {
+            background: rgba(0, 0, 0, 0.03);
+            color: #1e2a3a;
+        }
+        body.light-mode .social-btn {
+            background: rgba(0, 0, 0, 0.04);
+            color: #1e2a3a;
+        }
+        body.dark-mode .login-header h1 {
+            background: linear-gradient(135deg, #fff 25%, var(--accent) 75%);
+            -webkit-background-clip: text;
+        }
+
+        /* Glassmorphic premium card */
+        .login-card {
+            width: 92%;
+            max-width: 400px;
+            background: var(--surface-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 2.2rem;
+            padding: clamp(1.2rem, 5vw, 2.2rem);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow);
+            animation: cardGlide 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: transform 0.2s ease;
+        }
+
+        @keyframes cardGlide {
+            from { opacity: 0; transform: translateY(35px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-header {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .login-header h1 {
+            font-size: var(--fluid-h1);
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            background: linear-gradient(135deg, #fff 25%, var(--accent) 75%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .login-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Form styling */
+        .form-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 1rem;
+        }
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-wrapper i {
+            position: absolute;
+            left: 1.3rem;
+            color: var(--accent);
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3.2rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-light);
+            border-radius: 60px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+            outline: none;
+            font-weight: 500;
+        }
+        .form-control:focus {
+            border-color: var(--accent);
+            background: rgba(255, 106, 26, 0.08);
+            box-shadow: 0 0 18px rgba(255, 106, 26, 0.2);
+        }
+        .form-control::placeholder {
+            color: rgba(176, 179, 192, 0.5);
+            font-weight: 400;
+        }
+
+        /* Login options */
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1.2rem 0 1.5rem;
+            font-size: 0.8rem;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .remember-me input {
+            accent-color: var(--accent);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        .forgot-pass {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .forgot-pass:hover { 
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+
+        /* Primary cta button */
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: #0a0c10;
+            border: none;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            box-shadow: 0 8px 24px rgba(255, 106, 26, 0.3);
+            margin-bottom: 1.2rem;
+            font-family: inherit;
+        }
+        .submit-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(255, 106, 26, 0.4);
+        }
+
+        /* Social login section */
+        .social-login {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid var(--border-light);
+        }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: var(--transition-smooth);
+        }
+        .social-btn:hover {
+            background: rgba(255, 106, 26, 0.2);
+            border-color: var(--accent);
+            transform: scale(1.05);
+            color: var(--accent);
+        }
+
+        .signup-link {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .signup-link a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.2s;
+        }
+        .signup-link a:hover {
+            text-decoration: underline;
+            color: var(--accent-hover);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            section, .container, .login-card, .card, .box, div, p, h1, h2, h3, h4, h5, h6, a, span, button:not(.icon-btn):not(.rtl-btn):not(.menu-toggle) {
+                box-sizing: border-box !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                white-space: normal !important;
+            }
+            .login-card {
+                overflow: hidden !important;
+                padding: 20px !important;
+            }
+            .login-card { box-sizing: border-box; max-width: 100%; margin: 2rem auto; }
+            .login-hero { padding-left: 1rem; padding-right: 1rem; box-sizing: border-box; max-width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .login-card { padding: 2.5rem 1.5rem; box-sizing: border-box; max-width: 100%; width: 100%; }
+            .form-control { box-sizing: border-box; width: 100%; }
+            .submit-btn { box-sizing: border-box; width: 100%; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container { padding: 0.6rem 1rem; }
+            .login-card { padding: 2rem 1.2rem; border-radius: 24px; }
+            .login-header h1 { font-size: 1.8rem; }
+            .submit-btn { font-size: 0.95rem; padding: 1rem; }
+            .social-btn { width: 44px; height: 44px; font-size: 1rem; }
+            .icon-btn, .rtl-btn { padding: 0.45rem 0.8rem; font-size: 0.85rem; }
+            .form-control { padding: 0.9rem 0.9rem 0.9rem 2.8rem; }
+        }
+
+        @media (max-width: 320px) {
+            .login-header h1 { font-size: 1.6rem; }
+            .login-card { padding: 1.5rem 1rem; }
+            .submit-btn { padding: 0.8rem; font-size: 0.85rem; }
+        }
+        /* RTL support */
+        body[dir="rtl"] {
+            text-align: right;
+        }
+        body[dir="rtl"] .form-group {
+            text-align: right;
+        }
+        body[dir="rtl"] .form-group label {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+        body[dir="rtl"] .form-control {
+            padding: 1rem 3.2rem 1rem 1.5rem;
+        }
+        body[dir="rtl"] .input-wrapper i {
+            left: auto;
+            right: 1.3rem;
+        }
+        body[dir="rtl"] .remember-me {
+            flex-direction: row-reverse;
+        }
+        body[dir="rtl"] .top-right-actions {
+            right: auto;
+            left: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-right-actions" style="position: fixed; top: 1.5rem; right: 1.5rem; z-index: 1100; display: flex; gap: 0.8rem;">
+        <button class="icon-btn" id="darkModeToggle" title="Toggle Theme">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="rtl-btn" id="rtlToggle" aria-label="RTL"><i class="fas fa-exchange-alt"></i> <span>RTL</span></button>
+    </div>
+
+    <main class="login-hero">
+        <div class="login-card">
+            <div class="login-header">
+                <a href="index.html" class="logo-area" style="justify-content: center; text-decoration: none;">
+                    <i class="fas fa-car-side logo-icon"></i>
+                    <span class="brand-name">VELOCITY</span>
+                </a>
+                
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" class="form-control" placeholder="name@luxury.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <div class="login-options">
+                    <label class="remember-me">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" class="forgot-pass">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="submit-btn">Sign In</button>
+            </form>
+
+            <!-- Refined social login icons (clean & centered) -->
+            <div class="social-login">
+                <a href="#" class="social-btn" title="Sign in with Google">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="#" class="social-btn" title="Sign in with Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-btn" title="Sign in with Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+
+            <p class="signup-link">
+                Don't have an account? <a href="register.html">Sign Up</a>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const body = document.body;
+            const darkToggle = document.getElementById('darkModeToggle');
+            const rtlToggle = document.getElementById('rtlToggle');
+
+            // --- Dark Mode Logic ---
+            function updateDarkIcons(isDark) {
+                const icon = darkToggle?.querySelector('i');
+                if (icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            }
+
+            function toggleDarkMode() {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                updateDarkIcons(isDark);
+                localStorage.setItem('velocity-theme', isDark ? 'dark' : 'light');
+            }
+            if (darkToggle) darkToggle.addEventListener('click', toggleDarkMode);
+
+            // Init Theme: Always default to light mode on page load as requested
+            updateDarkIcons(false);
+
+            // --- RTL Logic ---
+            function toggleRTL() {
+                const currentDir = body.getAttribute('dir') || 'ltr';
+                const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                body.setAttribute('dir', newDir);
+                document.documentElement.setAttribute('dir', newDir);
+                localStorage.setItem('velocity-dir', newDir);
+                const span = rtlToggle?.querySelector('span');
+                if (span) span.innerText = newDir === 'rtl' ? 'LTR' : 'RTL';
+            }
+            if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+
+            // Init RTL
+            if (localStorage.getItem('velocity-dir') === 'rtl') {
+                body.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('dir', 'rtl');
+                const span = rtlToggle?.querySelector('span');
+                if (span) span.innerText = 'LTR';
+            }
+
+            // --- Login Form Logic ---
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert("🔐 Velocity Authentication Successful! Redirecting to your garage...");
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

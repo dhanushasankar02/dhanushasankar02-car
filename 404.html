@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Out of Bounds - Velocity</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0c10;
+            --accent: #ff6a1a;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b3c0;
+            --transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Ambient Background Background */
+        .bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vh;
+            background: radial-gradient(circle, rgba(255, 106, 26, 0.08) 0%, transparent 70%);
+            z-index: 0;
+            filter: blur(80px);
+            animation: pulse Glow 8s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .error-code {
+            font-size: clamp(8rem, 25vw, 15rem);
+            font-weight: 900;
+            line-height: 0.8;
+            margin-bottom: 2rem;
+            background: linear-gradient(to bottom, #fff 40%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -10px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .status-msg {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: #fff;
+            margin-bottom: 1rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: 0 15px 30px rgba(255, 106, 26, 0.2);
+            animation: slideUp 1s ease-out 0.3s backwards;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: #ff8539;
+            box-shadow: 0 20px 40px rgba(255, 106, 26, 0.4);
+        }
+
+        .home-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .home-btn:hover i {
+            transform: translateX(-5px);
+        }
+
+        /* Decorative Car Silhouette / Icon */
+        .decor-icon {
+            font-size: 3rem;
+            color: rgba(255, 106, 26, 0.2);
+            margin-bottom: 2rem;
+            animation: drive 10s linear infinite;
+        }
+
+        @keyframes drive {
+            0% { transform: translateX(-100vw); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(100vw); opacity: 0; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .error-code { letter-spacing: -5px; }
+            .home-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    
+    <div class="container">
+        <div class="decor-icon">
+            <i class="fas fa-car-side"></i>
+        </div>
+        
+        <h1 class="error-code">404</h1>
+        <h2 class="status-msg">Lost the racing line?</h2>
+        <p class="description">
+            The page you're looking for has accelerated beyond our reach. Let's get you back to the main track.
+        </p>
+        
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-arrow-left"></i> Return Home
+        </a>
+    </div>
+
+    <!-- Small footer tag (inline, not the full footer) -->
+    <div style="position: absolute; bottom: 2rem; width: 100%; text-align: center; color: rgba(255,255,255,0.2); font-size: 0.8rem; letter-spacing: 2px;">
+        © VELOCITY MOTORS | ENGINEERED FOR EXCELLENCE
+    </div>
+</body>
+</html>

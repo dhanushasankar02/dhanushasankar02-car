@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Velocity | Premium Navbar & Footer Suite</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+    <!-- Google Fonts & Font Awesome 6 (single source) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- RESET & GLOBAL DESIGN SYSTEM ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        :root {
+            --bg-primary: #f5f7fc;
+            --bg-secondary: #ffffff;
+            --surface-glass: rgba(245, 247, 252, 0.8);
+            --card-bg: #ffffff;
+            --text-primary: #1e2a3a;
+            --text-secondary: #4a5b6e;
+            --accent: #ff6a1a;
+            --accent-hover: #ff8539;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            --transition-smooth: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            --base-font: 1.125rem;
+            --container-width: min(92%, 1400px);
+            --section-padding: clamp(4rem, 8vw, 8rem);
+            --fluid-h1: clamp(3rem, 10vw, 7rem);
+            --fluid-h2: clamp(2rem, 6vw, 4rem);
+            --fluid-p: clamp(1rem, 1.2vw, 1.25rem);
+            --serif-font: 'Cormorant Garamond', serif;
+        }
+
+        body.dark-mode {
+            --bg-primary: #0a0c10;
+            --bg-secondary: #111318;
+            --surface-glass: rgba(15, 17, 22, 0.7);
+            --card-bg: #14171f;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b3c0;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: var(--base-font);
+            line-height: 1.5;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background 0.3s ease, color 0.2s ease;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* ----- STICKY GLASS NAVBAR (core component) ----- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(18px);
+            background: var(--surface-glass);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-container {
+            max-width: 1440px;
+            width: 92%;
+            margin: 0 auto;
+            padding: 0.6rem 0;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .logo-area {
+            justify-self: start;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .logo-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: var(--transition-smooth);
+        }
+        .brand-name {
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #1e2a3a, var(--accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        body.dark-mode .brand-name {
+            background: linear-gradient(135deg, #fff 30%, var(--accent) 80%);
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        /* Desktop Navigation — clean & minimal */
+        .nav-links {
+            justify-self: center;
+            display: flex;
+            gap: 0.3rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-primary);
+            border-radius: 40px;
+            transition: var(--transition-smooth);
+            background: transparent;
+        }
+        .nav-links a:hover {
+            background: rgba(255, 106, 26, 0.15);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .nav-links a.active {
+            background: var(--accent);
+            color: #0a0c10 !important;
+        }
+
+        /* Dropdown (Home 1 / Home 2) + invisible bridge */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 0;
+            width: 100%;
+            height: 24px;
+            background: transparent;
+            pointer-events: auto;
+            z-index: 101;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0px;
+            background: var(--surface-glass);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 0.6rem 0;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.2s ease;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 18px 32px rgba(0, 0, 0, 0.4);
+            z-index: 200;
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(6px);
+        }
+        .dropdown-menu li {
+            list-style: none;
+        }
+        .dropdown-menu a {
+            display: flex;
+            padding: 0.6rem 1.4rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            border-radius: 0;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(255, 106, 26, 0.2);
+            transform: translateX(4px);
+        }
+        body[dir="rtl"] .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+        body[dir="rtl"] .dropdown-menu a:hover {
+            transform: translateX(-4px);
+        }
+
+        /* Right side actions */
+        .nav-actions {
+            justify-self: end;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .icon-btn, .rtl-btn, .login-btn, .menu-toggle {
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.45rem 1rem;
+            border-radius: 40px;
+            transition: var(--transition-smooth);
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+        .login-btn {
+            background: rgba(255, 106, 26, 0.15);
+            border: 1px solid rgba(255, 106, 26, 0.4);
+        }
+        .login-btn:hover, .icon-btn:hover, .rtl-btn:hover {
+            background: var(--accent);
+            color: #0a0c10;
+            transform: scale(1.02);
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            background: rgba(255,106,26,0.12);
+            padding: 0.3rem 0.9rem;
+        }
+
+        /* ----- MOBILE SLIDE MENU (luxury overlay) ----- */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(6px);
+            z-index: 1200;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .mobile-nav-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 340px;
+            max-width: 86vw;
+            height: 100%;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(28px);
+            box-shadow: -12px 0 40px rgba(0,0,0,0.5);
+            z-index: 1300;
+            transition: right 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            border-left: 3px solid var(--accent);
+            overflow-y: auto;
+        }
+        body[dir="rtl"] .mobile-menu-panel {
+            right: auto;
+            left: -100%;
+            border-left: none;
+            border-right: 3px solid var(--accent);
+        }
+        body[dir="rtl"] .mobile-menu-panel.open {
+            left: 0;
+            right: auto;
+        }
+        .mobile-menu-panel.open {
+            right: 0;
+        }
+        .mobile-close {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--accent);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .mobile-nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .mobile-nav-list li a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            padding: 0.7rem 1.2rem;
+            border-radius: 12px;
+            transition: 0.2s;
+        }
+        .mobile-nav-list li a.active {
+            background: rgba(255, 106, 26, 0.15);
+            color: var(--accent) !important;
+            border-left: 4px solid var(--accent);
+        }
+        body[dir="rtl"] .mobile-nav-list li a.active {
+            border-left: none;
+            border-right: 4px solid var(--accent);
+        }
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.4rem 0;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+        }
+        .mobile-caret {
+            font-size: 0.75rem;
+            transition: transform 0.25s ease;
+            color: var(--accent);
+        }
+        .mobile-submenu {
+            list-style: none;
+            padding-left: 1.2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.32s ease-out;
+        }
+        .mobile-submenu.show {
+            max-height: 200px;
+        }
+        .mobile-submenu li a {
+            font-size: 1rem;
+            padding: 0.6rem 0;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        .mobile-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.5rem;
+        }
+        .mobile-action-btn {
+            background: rgba(255, 106, 26, 0.1);
+            border: 1px solid rgba(255, 106, 26, 0.3);
+            padding: 0.8rem 1rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .mobile-action-btn:hover {
+            background: var(--accent);
+            color: #0a0c10;
+            transform: scale(1.02);
+        }
+
+        /* Demo hero content */
+        .demo-content {
+            min-height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 1.5rem;
+            background: radial-gradient(circle at 20% 30%, rgba(255,106,26,0.04) 0%, transparent 70%);
+        }
+        .demo-card {
+            max-width: 720px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2rem 2rem 2.2rem;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow);
+        }
+        .demo-card h2 {
+            font-size: 2.1rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .demo-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.8rem;
+        }
+        .demo-badge {
+            display: inline-block;
+            background: var(--accent);
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        /* ----- PREMIUM FOOTER (fully integrated) ----- */
+        .velocity-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-light);
+            padding: 3rem 2rem 1.8rem;
+            margin-top: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer-container {
+            max-width: 1280px;
+            width: 92%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2.5rem;
+        }
+        .footer-col h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.2px;
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+        }
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+        body[dir="rtl"] .footer-col h4:after {
+            left: auto;
+            right: 0;
+        }
+        .footer-col p, .footer-col ul {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-col ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        body[dir="rtl"] .footer-col ul li a:hover {
+            padding-left: 0;
+            padding-right: 5px;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 106, 26, 0.15);
+            border-radius: 50%;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            background: var(--accent);
+            color: #0a0c10;
+            transform: translateY(-3px);
+        }
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border-radius: 60px;
+            border: 1px solid var(--border-light);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: inherit;
+            outline: none;
+            transition: 0.2s;
+        }
+        .newsletter-form input:focus {
+            border-color: var(--accent);
+        }
+        .newsletter-form button {
+            background: var(--accent);
+            border: none;
+            padding: 0.7rem 1.3rem;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #0a0c10;
+        }
+        .newsletter-form button:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }        /* --- MOBILE & TABLET OPTIMIZATIONS (ALL SCREENS) --- */
+        @media (max-width: 1024px) {
+            .nav-container { display: flex; justify-content: space-between; }
+            .nav-links, .nav-actions .icon-btn, .nav-actions .rtl-btn, .nav-actions .login-btn { display: none; }
+            .menu-toggle { display: flex; }
+            
+            .about-section { padding: 80px 1.5rem; }
+            .engineering-section { grid-template-columns: 1fr; }
+            .eng-image { min-height: 400px; }
+            .eng-content { padding: 4rem 2rem; }
+            
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: clamp(3rem, 12vw, 5rem); letter-spacing: -2px; }
+            .hero-subtitle { font-size: 0.9rem; letter-spacing: 4px; }
+            
+            .hero-image-wrapper img { transform: none !important; }
+            .hero-glass-card { position: relative; left: 0; bottom: 0; margin-top: 2rem; max-width: 100%; }
+            
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; padding: 0 0 0 50px; text-align: left !important; }
+            .timeline-item:nth-child(even) { left: 0; }
+            .timeline-dot { left: 20px; transform: translateX(-50%); }
+            
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .footer-col h4:after { left: 50%; transform: translateX(-50%); }
+        }
+
+        @media (max-width: 480px) {
+            .brand-name { font-size: 1.2rem; }
+            .about-section { padding: 60px 1rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .stat-box h3 { font-size: 2.8rem; }
+            .eng-content h2 { font-size: 2.2rem; }
+            .eng-feature { flex-direction: column; gap: 0.5rem; }
+        }
+
+        /* ----- ABOUT PAGE UNIQUE SECTIONS ----- */
+        .about-section {
+            padding: var(--section-padding) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-container {
+            max-width: 1300px;
+            width: 92%;
+            margin: 0 auto;
+        }
+
+        /* 1. Immersive Hero */
+        .about-hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: var(--serif-font);
+            font-size: var(--fluid-h1);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 0.8;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(to bottom, #fff 40%, var(--accent) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleReveal 1.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        @keyframes titleReveal {
+            0% { transform: translateY(120px) scale(0.9); opacity: 0; filter: blur(20px); }
+            100% { transform: translateY(0) scale(1); opacity: 1; filter: blur(0); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            font-weight: 700;
+            opacity: 0.8;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: var(--transition-smooth);
+        }
+        .hero-image-wrapper img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .hero-glass-card {
+            position: absolute;
+            bottom: -30px;
+            left: -50px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            max-width: 300px;
+            z-index: 2;
+        }
+
+        /* 2. Philosophy - Feature Cards */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .philosophy-card {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+            text-align: center;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(255, 106, 26, 0.15);
+        }
+
+        .philosophy-card i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        /* 3. Engineering - Split Screen */
+        .engineering-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #050608;
+            padding: 0;
+            align-items: center;
+        }
+
+        .eng-image {
+            height: 100%;
+            min-height: 600px;
+            background: url('images/engineering.png') no-repeat center center/cover;
+        }
+
+        .eng-content {
+            padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem);
+        }
+
+        .eng-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .eng-feature {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .eng-feature i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+
+        /* 4. Heritage - Abstract Background */
+        .heritage-section {
+            text-align: center;
+            background: radial-gradient(circle at center, #111318 0%, #0a0c10 100%);
+        }
+
+        .heritage-bg-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25vw;
+            font-weight: 900;
+            color: rgba(255,255,255,0.02);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .heritage-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 5. Stats - Glassmorphism */
+        .stats-section {
+            background: linear-gradient(rgba(10,12,16,0.8), rgba(10,12,16,0.8)), url('images/showroom.png') fixed center/cover;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(15px);
+            padding: 3rem 1.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .stat-box h3 {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* 6. Journey - Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 4rem auto 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--border-light);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            width: 50%;
+            position: relative;
+            padding: 0 3rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            right: -8px;
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -8px;
+        }
+
+        /* 7. Experience - Concierge (Carbon Fiber Pattern) */
+        .concierge-section {
+            background: 
+                linear-gradient(30deg, #0a0c10 12%, transparent 12.5%, transparent 87%, #0a0c10 87.5%, #0a0c10),
+                linear-gradient(150deg, #0a0c10 12%, transparent 12.5%, transparent 87%, #0a0c10 87.5%, #0a0c10),
+                linear-gradient(60deg, #111318 25%, transparent 25.5%, transparent 75%, #111318 75%, #111318);
+            background-size: 80px 140px;
+        }
+
+        /* 8. CTA Section */
+        .about-cta {
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+            border-radius: 40px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 50px rgba(255, 106, 26, 0.1);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1.2rem 3rem;
+            background: var(--accent);
+            color: #000;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--accent);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            section, .container, .philosophy-card, .stat-box, .cta-box, .hero-glass-card, .card, .box, div, p, h1, h2, h3, h4, h5, h6, a, span, button:not(.icon-btn):not(.rtl-btn):not(.menu-toggle) {
+                box-sizing: border-box !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                white-space: normal !important;
+            }
+            .philosophy-card, .stat-box, .cta-box {
+                overflow: hidden !important;
+                padding: 20px !important;
+            }
+            .about-section { overflow-x: hidden; box-sizing: border-box; max-width: 100%; }
+            .about-container { box-sizing: border-box; max-width: 100%; padding: 0 1rem; }
+            .about-hero-grid, .engineering-section { grid-template-columns: 1fr; box-sizing: border-box; max-width: 100%; }
+            .about-hero-grid { text-align: center; gap: 4rem; }
+            .hero-text-content h1 { font-size: clamp(3rem, 10vw, 4.5rem); padding: 0 1rem; box-sizing: border-box; }
+            .hero-text-content p { margin-left: auto; margin-right: auto; box-sizing: border-box; max-width: 100%; }
+            .hero-image-wrapper img { transform: none; box-sizing: border-box; max-width: 100%; }
+            .hero-glass-card { position: relative; left: 0; bottom: 0; margin: 2rem auto 0; transform: none; box-sizing: border-box; max-width: 100%; width: 100%; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; box-sizing: border-box; max-width: 100%; }
+            .concierge-grid { grid-template-columns: 1fr !important; gap: 3rem !important; box-sizing: border-box; max-width: 100%; }
+            .philosophy-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; box-sizing: border-box; max-width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .about-section { padding: 60px 1.2rem; box-sizing: border-box; max-width: 100%; }
+            .hero-text-content h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); }
+            .eng-content { padding: 4rem 1.5rem; box-sizing: border-box; max-width: 100%; }
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; text-align: left !important; padding: 0 0 3rem 50px; box-sizing: border-box; max-width: 100%; left: 0 !important; }
+            .timeline-dot { left: 12px !important; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .heritage-bg-text { font-size: 35vw; }
+            .cta-box { padding: 3rem 1.5rem; box-sizing: border-box; max-width: 100%; border-radius: 24px; }
+            .philosophy-grid { grid-template-columns: 1fr; }
+            .cta-btn { box-sizing: border-box; max-width: 100%; width: 100%; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); letter-spacing: -1px; }
+            .hero-subtitle { font-size: 0.85rem; letter-spacing: 3px; }
+            .philosophy-card { padding: 2.5rem 1.5rem; border-radius: 20px; }
+            .eng-content h2 { font-size: 2rem; }
+            .stat-box { padding: 2.5rem 1.2rem; }
+            .stat-box h3 { font-size: 2.6rem; }
+            .cta-box { padding: 2.5rem 1.2rem; }
+            .cta-btn { padding: 1rem 1.2rem; font-size: 0.95rem; }
+        }
+
+        @media (max-width: 320px) {
+            .hero-title { font-size: 1.8rem; }
+            .stat-box h3 { font-size: 2.2rem; }
+            .eng-content h2 { font-size: 1.8rem; }
+            .cta-box { padding: 2rem 1rem; }
+        }
+
+        /* ----- ABOUT PAGE THEME ADAPTATIONS ----- */
+        /* Section Backgrounds */
+        .about-section {
+            background: var(--bg-primary);
+        }
+        .about-section.engineering-section,
+        .about-section.philosophy-section {
+            background: var(--bg-secondary);
+        }
+
+        /* Hero */
+        .about-hero {
+            background: linear-gradient(rgba(245,247,252,0.4), rgba(245,247,252,0.85)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat !important;
+        }
+        body.dark-mode .about-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat !important;
+        }
+
+        .hero-title {
+            background: linear-gradient(to bottom, var(--text-primary) 0%, var(--accent) 100%) !important;
+            -webkit-background-clip: text !important;
+            color: transparent !important;
+            text-shadow: none !important;
+        }
+        body.dark-mode .hero-title {
+            background: linear-gradient(to bottom, #fff 40%, var(--accent) 100%) !important;
+            -webkit-background-clip: text !important;
+        }
+
+        .hero-subtitle {
+            color: var(--accent) !important;
+        }
+
+        .hero-glass-card {
+            background: var(--surface-glass);
+            border-color: var(--border-light);
+            box-shadow: var(--shadow);
+        }
+
+        /* Cards & Features */
+        .philosophy-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow);
+        }
+
+        .demo-badge {
+            background: var(--accent);
+            color: #0a0c10;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('images/showroom.png') fixed center/cover;
+        }
+        body.dark-mode .stats-section {
+            background: linear-gradient(rgba(10,12,16,0.8), rgba(10,12,16,0.8)), url('images/showroom.png') fixed center/cover;
+        }
+
+        .stat-box {
+            background: var(--card-bg);
+            border-color: var(--border-light);
+            backdrop-filter: blur(15px);
+        }
+        body.dark-mode .stat-box {
+            background: rgba(255,255,255,0.03);
+        }
+
+        /* Heritage & Engineering */
+        .heritage-section {
+            background: radial-gradient(circle at center, #ffffff 0%, #f5f7fc 100%);
+        }
+        body.dark-mode .heritage-section {
+            background: radial-gradient(circle at center, #111318 0%, #0a0c10 100%);
+        }
+
+        .heritage-bg-text {
+            color: rgba(0,0,0,0.03);
+        }
+        body.dark-mode .heritage-bg-text {
+            color: rgba(255,255,255,0.02);
+        }
+
+        .timeline::before {
+            background: var(--border-light);
+        }
+
+        /* Concierge Section Pattern */
+        .concierge-section {
+            background: 
+                linear-gradient(30deg, var(--bg-primary) 12%, transparent 12.5%, transparent 87%, var(--bg-primary) 87.5%, var(--bg-primary)),
+                linear-gradient(150deg, var(--bg-primary) 12%, transparent 12.5%, transparent 87%, var(--bg-primary) 87.5%, var(--bg-primary)),
+                linear-gradient(60deg, var(--bg-secondary) 25%, transparent 25.5%, transparent 75%, var(--bg-secondary) 75%, var(--bg-secondary));
+            background-size: 80px 140px;
+        }
+
+        .cta-box {
+            background: var(--bg-secondary);
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+        body.dark-mode .cta-box {
+            background: #14171f;
+        }
+    </style>
+
+</head>
+<body dir="ltr">
+    <!-- ==================== VELOCITY NAVBAR (GLASS, STICKY) ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-area">
+                <i class="fas fa-car-side logo-icon"></i>
+                <span class="brand-name">VELOCITY</span>
+            </a>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html" class="home-drop-link"> Home 1</a></li>
+                        <li><a href="home2.html" class="home-drop-link"> Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html"> About</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="pricing.html"> Pricing</a></li>
+                <li><a href="gallery.html"> Gallery</a></li>
+                <li><a href="booking.html"> Booking</a></li>
+                <li><a href="contact.html"> Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="icon-btn" id="darkModeToggle" aria-label="Dark mode"><i class="fas fa-moon"></i></button>
+                <button class="rtl-btn" id="rtlToggle" aria-label="RTL"><i class="fas fa-exchange-alt"></i> RTL</button>
+                <button class="login-btn" onclick="window.location.href='login.html'"><i class="fas fa-user-circle"></i> <span>Login</span></button>
+                <button class="menu-toggle" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Slide Out Panel (clean & accessible) -->
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu-panel" id="mobilePanel">
+        <button class="mobile-close" id="closeMobileMenu"><i class="fas fa-times-circle"></i></button>
+        <ul class="mobile-nav-list">
+            <li class="mobile-dropdown-parent">
+                <div class="mobile-dropdown-toggle" id="mobileHomeToggle">
+                    <span>Home</span> 
+                    <span class="mobile-caret">▼</span>
+                </div>
+                <ul class="mobile-submenu" id="mobileHomeSubmenu">
+                    <li><a href="index.html" class="mobile-home-link">Home 1</a></li>
+                    <li><a href="home2.html" class="mobile-home-link">Home 2</a></li>
+                </ul>
+            </li>
+            <li><a href="about.html"> About</a></li>
+            <li><a href="service.html"> Services</a></li>
+            <li><a href="pricing.html"> Pricing</a></li>
+            <li><a href="gallery.html"> Gallery</a></li>
+            <li><a href="booking.html"> Booking</a></li>
+            <li><a href="contact.html"> Contact</a></li>
+        </ul>
+        <div class="mobile-actions">
+            <button class="mobile-action-btn" id="mobileDarkToggle"><i class="fas fa-moon"></i> Dark Mode</button>
+            <button class="mobile-action-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i> RTL Layout</button>
+            <button class="mobile-action-btn" id="mobileLoginBtn" onclick="window.location.href='login.html'"><i class="fas fa-user-circle"></i> Login</button>
+        </div>
+        <div style="margin-top: auto; padding-top: 2rem;"><small style="color: var(--accent); letter-spacing: 0.3px;">© Velocity Motors</small></div>
+    </div>
+
+    <!-- SECTION 1: IMMERSIVE HERO -->
+    <section class="about-hero">
+        <div class="about-container">
+            <div class="hero-text-content">
+                <span class="hero-subtitle">EST. 2005</span>
+                <h1 class="hero-title">Beyond the <br>Limit.</h1>
+                <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">Velocity is more than a brand; it's a movement of automotive perfectionists dedicated to the art of the drive.</p>
+                <a href="#about-philosophy" class="login-btn" style="padding: 1.2rem 3rem; text-decoration: none; display: inline-block;">Discover Our DNA</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: PHILOSOPHY -->
+    <section class="about-section" id="about-philosophy">
+        <div class="about-container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 2.5rem;">Built on Obsession</h2>
+                <p style="color: var(--text-secondary);">The three pillars that define every Velocity project.</p>
+            </div>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Innovation</h3>
+                    <p>Pushing the boundaries of what's possible with cutting-edge materials and digital precision.</p>
+                </div>
+                <div class="philosophy-card">
+                    <i class="fas fa-compass"></i>
+                    <h3>Precision</h3>
+                    <p>Calculated to the micron. We believe that perfection is found in the smallest details.</p>
+                </div>
+                <div class="philosophy-card">
+                    <i class="fas fa-fire-alt"></i>
+                    <h3>Passion</h3>
+                    <p>Driven by the roar of the engine and the thrill of the open road. Performance is our heartbeat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: ENGINEERING -->
+    <section class="about-section engineering-section">
+        <div class="eng-image"></div>
+        <div class="eng-content">
+            <span class="demo-badge">Technology</span>
+            <h2>Mastery in <br>Motion</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 3rem;">Our engineering lab is where art meets physics. We utilize advanced telemetry and aerospace-grade materials to enhance every aspect of vehicle performance.</p>
+            
+            <div class="eng-feature">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Aerodynamic Synthesis</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Redefining drag coefficients through computational fluid dynamics.</p>
+                </div>
+            </div>
+            <div class="eng-feature">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Weight-to-Power Optimization</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Carbon fiber composites for maximum structural integrity with minimum mass.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: HERITAGE -->
+    <section class="about-section heritage-section">
+        <div class="heritage-bg-text">V-18</div>
+        <div class="about-container heritage-content">
+            <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">18 Years of <br>Pure Adrenaline</h2>
+            <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary);">From a small specialized garage to a global powerhouse in luxury automotive engineering. Our journey has been defined by one goal: the pursuit of the extraordinary.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h4 style="color: var(--accent);">2005</h4>
+                    <p>The first Velocity workshop opens its doors.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h4 style="color: var(--accent);">2012</h4>
+                    <p>Named "Innovator of the Year" in performance tuning.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h4 style="color: var(--accent);">2018</h4>
+                    <p>Global expansion into the Middle East and European markets.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h4 style="color: var(--accent);">2024</h4>
+                    <p>Launching the future of hybrid-performance supercars.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: STATS -->
+    <section class="about-section stats-section">
+        <div class="about-container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>2.5K+</h3>
+                    <p>Masterpieces Built</p>
+                </div>
+                <div class="stat-box">
+                    <h3>15</h3>
+                    <p>Global Awards</p>
+                </div>
+                <div class="stat-box">
+                    <h3>100%</h3>
+                    <p>Client Satisfaction</p>
+                </div>
+                <div class="stat-box">
+                    <h3>50+</h3>
+                    <p>Elite Engineers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CONCIERGE -->
+    <section class="about-section concierge-section">
+        <div class="about-container concierge-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <div>
+                <h2 style="font-size: 3rem; margin-bottom: 2rem;">The Concierge <br>Experience</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Luxury is not just about the car; it's about the relationship. Our bespoke service ensures that every Velocity owner receives white-glove treatment, from initial design to lifetime maintenance.</p>
+                <ul style="list-style: none; color: var(--text-secondary); padding: 0;">
+                    <li style="margin-bottom: 1rem;"><i class="fas fa-gem" style="color: var(--accent); margin-right: 10px;"></i> 1-on-1 Design Consultation</li>
+                    <li style="margin-bottom: 1rem;"><i class="fas fa-shuttle-van" style="color: var(--accent); margin-right: 10px;"></i> Enclosed Global Transport</li>
+                    <li style="margin-bottom: 1rem;"><i class="fas fa-tools" style="color: var(--accent); margin-right: 10px;"></i> 24/7 Technical Support</li>
+                </ul>
+            </div>
+            <div style="border-radius: 30px; overflow: hidden; border: 1px solid var(--accent); box-shadow: 0 0 40px rgba(255, 106, 26, 0.2);">
+                <img src="images/showroom.png" alt="Concierge Experience" style="width: 100%; display: block;">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: QUOTE -->
+    <section class="about-section" style="background: var(--bg-secondary);">
+        <div class="about-container" style="text-align: center;">
+            <i class="fas fa-quote-left" style="font-size: 4rem; color: var(--accent); opacity: 0.2; margin-bottom: 2rem;"></i>
+            <h2 style="font-style: italic; font-weight: 300; font-size: 2.2rem; max-width: 900px; margin: 0 auto;">"We don't just build cars. We build the extensions of the driver's soul. If it doesn't make your heart race, it isn't a Velocity."</h2>
+            <p style="margin-top: 2rem; font-weight: 700; letter-spacing: 2px; color: var(--accent);">— MARCO VINCENZO, FOUNDER</p>
+        </div>
+    </section>
+
+    <!-- SECTION 8: CTA -->
+    <section class="about-section about-cta">
+        <div class="about-container">
+            <div class="cta-box">
+                <h2 style="font-size: 3rem; margin-bottom: 1rem;">Ready for the Extraordinary?</h2>
+                <p style="color: var(--text-secondary);">Join the elite circle of enthusiasts who demand nothing but the best.</p>
+                <a href="#" class="cta-btn">Enter the Vault</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER (integrated, theme-aware) ==================== -->
+    <footer class="velocity-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="logo-area" style="margin-bottom: 1.5rem;">
+                    <i class="fas fa-car-side logo-icon" style="color: var(--accent); font-size: 1.8rem; margin-right: 0.8rem;"></i>
+                    <span class="brand-name" style="font-weight: 900; letter-spacing: 2px; font-size: 1.5rem;">VELOCITY</span>
+                </div>
+                <p>Redefining automotive passion with cutting-edge engineering and bespoke concierge services. Drive the extraordinary.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index.html"> Home</a></li>
+                    <li><a href="about.html"> About</a></li>
+                    <li><a href="service.html"> Services</a></li>
+                    <li><a href="pricing.html"> Pricing</a></li>
+                    <li><a href="gallery.html"> Gallery</a></li>
+                    <li><a href="booking.html"> Booking</a></li>
+                    <li><a href="contact.html"> Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Warranty & Care</a></li>
+                    <li><a href="#">Financing</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p>Get exclusive offers and new model alerts.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email address" id="newsletterEmailFooter">
+                    <button id="subscribeNewsletterBtn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 VELOCITY — engineered for enthusiasts. All rights reserved. | <span style="color: var(--accent);">Orange adrenaline since 2005</span></p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // DOM elements
+            const body = document.body;
+            const darkToggleDesktop = document.getElementById('darkModeToggle');
+            const rtlToggleDesktop = document.getElementById('rtlToggle');
+            const loginBtnDesktop = document.getElementById('loginBtn');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobilePanel = document.getElementById('mobilePanel');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const closeMobileBtn = document.getElementById('closeMobileMenu');
+            const mobileHomeToggle = document.getElementById('mobileHomeToggle');
+            const mobileSubmenu = document.getElementById('mobileHomeSubmenu');
+            const mobileDarkToggle = document.getElementById('mobileDarkToggle');
+            const mobileRtlToggle = document.getElementById('mobileRtlToggle');
+            const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+            const subscribeBtn = document.getElementById('subscribeNewsletterBtn');
+
+            // ----- Helper: close mobile panel -----
+            function closeMobileMenuPanel() {
+                if (!mobilePanel || !mobileOverlay) return;
+                mobilePanel.classList.remove('open');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // ----- 1. Dark Mode Toggle (Desktop & Mobile sync + icon swap)-----
+            function updateDarkIcons(isDark) {
+                const desktopIcon = darkToggleDesktop?.querySelector('i');
+                const mobileIcon = mobileDarkToggle?.querySelector('i');
+                if (desktopIcon) {
+                    desktopIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                }
+                if (mobileIcon) {
+                    mobileIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                }
+            }
+
+            function toggleDarkMode() {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                updateDarkIcons(isDark);
+                localStorage.setItem('velocity-theme', isDark ? 'dark' : 'light');
+            }
+            if (darkToggleDesktop) darkToggleDesktop.addEventListener('click', toggleDarkMode);
+            if (mobileDarkToggle) mobileDarkToggle.addEventListener('click', toggleDarkMode);
+
+            // Init Dark Mode: Always default to light mode on page load as requested
+            updateDarkIcons(false);
+
+            // ----- 2. RTL Toggle (preserves layout, closes mobile)-----
+            function toggleRTL() {
+                const currentDir = body.getAttribute('dir') || 'ltr';
+                const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                body.setAttribute('dir', newDir);
+                document.documentElement.setAttribute('dir', newDir);
+                localStorage.setItem('velocity-dir', newDir);
+                closeMobileMenuPanel();
+            }
+            if (rtlToggleDesktop) rtlToggleDesktop.addEventListener('click', toggleRTL);
+            if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+
+            // Init RTL
+            if (localStorage.getItem('velocity-dir') === 'rtl') {
+                body.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
+
+            // ----- 3. Login demo action-----
+            function handleLogin() {
+                window.location.href = 'login.html';
+            }
+            if (loginBtnDesktop) loginBtnDesktop.addEventListener('click', handleLogin);
+            if (mobileLoginBtn) mobileLoginBtn.addEventListener('click', handleLogin);
+
+            // ----- 4. Mobile menu controls-----
+            function openMobileMenu() {
+                if (!mobilePanel || !mobileOverlay) return;
+                mobilePanel.classList.add('open');
+                mobileOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+            if (closeMobileBtn) closeMobileBtn.addEventListener('click', closeMobileMenuPanel);
+            if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenuPanel);
+
+            // ----- 5. Mobile submenu toggle (Home dropdown)-----
+            if (mobileHomeToggle && mobileSubmenu) {
+                mobileHomeToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mobileSubmenu.classList.toggle('show');
+                    const caretSpan = mobileHomeToggle.querySelector('.mobile-caret');
+                    if (caretSpan) {
+                        caretSpan.style.transform = mobileSubmenu.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    }
+                });
+            }
+
+            // ----- 6. Prevent any navbar/footer demo hash navigation & close mobile if needed -----
+            const allInternalLinks = document.querySelectorAll('.nav-links a, .dropdown-menu a, .mobile-nav-list a, .mobile-submenu a, .footer-col a');
+            allInternalLinks.forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    const href = anchor.getAttribute('href');
+                    if (href === '#' || href === '' || href.startsWith('#')) {
+                        e.preventDefault();
+                        // Optional console feedback (non-intrusive)
+                        if (anchor.closest('.velocity-footer')) {
+                            // footer demo link, just prevent jump
+                        }
+                        closeMobileMenuPanel();
+                        return false;
+                    }
+                    closeMobileMenuPanel();
+                });
+            });
+
+            // Special handling for newsletter subscription
+            if (subscribeBtn) {
+                subscribeBtn.addEventListener('click', () => {
+                    const emailInput = document.getElementById('newsletterEmailFooter');
+                    const email = emailInput ? emailInput.value.trim() : '';
+                    if (email && email.includes('@') && email.includes('.')) {
+                        alert(`✨ Thanks for subscribing! ${email} will receive Velocity highlights.`);
+                        emailInput.value = '';
+                    } else {
+                        alert('Please enter a valid email address to subscribe.');
+                    }
+                });
+            }
+
+            // Allow navigation for home drop links and mobile home links
+            document.querySelectorAll('.home-drop-link, .mobile-home-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMobileMenuPanel();
+                });
+            });
+
+            // Close mobile panel when window resizes past desktop breakpoint
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024) {
+                    closeMobileMenuPanel();
+                }
+            });
+
+            // Ensure any stray hash navigation is suppressed
+            window.addEventListener('hashchange', (e) => {
+                if (window.location.hash === '#') {
+                    e.preventDefault();
+                    history.pushState("", document.title, window.location.pathname);
+                }
+            });
+
+            // init: sync initial icons for mobile if light-mode isn't active; all good
+            if (body.classList.contains('light-mode')) {
+                const desktopIcon = darkToggleDesktop?.querySelector('i');
+                const mobileIcon = mobileDarkToggle?.querySelector('i');
+                if (desktopIcon) { desktopIcon.classList.remove('fa-moon'); desktopIcon.classList.add('fa-sun'); }
+                if (mobileIcon) { mobileIcon.classList.remove('fa-moon'); mobileIcon.classList.add('fa-sun'); }
+            }
+            // ----- Active Link Handler -----
+            function setActiveLinks() {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                const allNavLinks = document.querySelectorAll('.nav-links a, .mobile-nav-list a, .dropdown-menu a, .mobile-submenu a');
+                
+                allNavLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('active');
+                        
+                        const dropdown = link.closest('.dropdown');
+                        if (dropdown) {
+                            const parentLink = dropdown.querySelector('a');
+                            if (parentLink) parentLink.classList.add('active');
+                        }
+                        
+                        const mobileSub = link.closest('.mobile-submenu');
+                        if (mobileSub) {
+                            const toggle = mobileSub.previousElementSibling;
+                            if (toggle) toggle.classList.add('active');
+                        }
+                    }
+                });
+            }
+            setActiveLinks();
+        })();
+    </script>
+</body>
+</html>
