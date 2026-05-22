@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, viewport-fit=cover">
-    <title>Login · Velocity | Premium Automotive Portal</title>
+    <title>Login Â· Velocity | Premium Automotive Portal</title>
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 
     <!-- Custom Favicon - Windshield Shield -->
@@ -59,7 +59,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* NO SCROLL — fit exactly one screen */
+        /* NO SCROLL â€” fit exactly one screen */
         html,
         body {
             height: 100%;
@@ -84,7 +84,7 @@
             color: #F1F5F9;
         }
 
-        /* toggle buttons — positioned top-right */
+        /* toggle buttons â€” positioned top-right */
         .theme-toggle-wrapper {
             position: fixed;
             top: 12px;
@@ -569,6 +569,211 @@
             left: auto;
             right: 20px;
         }
+    
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-col h4:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .newsletter-form {
+                justify-content: center;
+            }
+        }
+
+        /* responsive navbar */
+        @media (max-width: 1024px) {
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .nav-links {
+                display: none;
+            }
+            .nav-actions .icon-btn,
+            .nav-actions .rtl-btn,
+            .nav-actions .login-btn {
+                display: none;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+        }
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 1.2rem;
+            }
+            .demo-card h2 {
+                font-size: 1.7rem;
+            }
+        }
+
+        /* ----- MOBILE RESPONSIVENESS PATCH ----- */
+        @media (max-width: 1199px) {
+            .hero-title {
+                font-size: 5rem;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .hero-title {
+                font-size: 4rem;
+                line-height: 1.1;
+            }
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .innovation-split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .stat-num {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 3.5rem;
+            }
+            .hero-title {
+                font-size: clamp(2.2rem, 10vw, 3.5rem);
+                line-height: 1.1;
+                margin-bottom: 1.5rem;
+                letter-spacing: -1px;
+            }
+            .hero-subtitle {
+                font-size: 0.75rem;
+                letter-spacing: 4px;
+                margin-bottom: 1rem;
+            }
+            .stat-num {
+                font-size: 3rem;
+            }
+            .marquee-content {
+                font-size: 2.5rem;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .bento-1, .bento-2, .bento-3, .bento-4, .bento-5 {
+                grid-column: span 1 !important;
+            }
+            .fleet-card {
+                min-height: 380px;
+            }
+            .home-hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 100px 0 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .stat-num {
+                font-size: 2.5rem;
+            }
+            .bento-item {
+                padding: 1.5rem;
+            }
+            .fleet-content h3 {
+                font-size: 1.5rem;
+            }
+        }
+        /* ----- FULL MOBILE RESPONSIVENESS SUITE ----- */
+        /* Prevent horizontal scrolling and force internal bounding */
+        html, body {
+            overflow-x: hidden;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+
+        img, video, canvas, svg {
+            max-width: 100%;
+            height: auto;
+            box-sizing: border-box;
+        }
+
+        /* Breakpoint: 1024px */
+        @media (max-width: 1024px) {
+            section, .container, .bento-item, .fleet-card, .review-card, .showroom-bridge, .card, .box, div, p, h1, h2, h3, h4, h5, h6, a, span, button:not(.icon-btn):not(.rtl-btn):not(.menu-toggle) {
+                box-sizing: border-box !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                white-space: normal !important;
+            }
+            .bento-item, .fleet-card, .review-card, .showroom-bridge {
+                overflow: hidden !important;
+                padding: 20px !important;
+            }
+            .home-section { overflow-x: hidden; box-sizing: border-box; max-width: 100%; }
+            .home-container { box-sizing: border-box; max-width: 100%; padding: 0 1rem; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; box-sizing: border-box; max-width: 100%; }
+            .bento-item { grid-column: span 2; box-sizing: border-box; max-width: 100%; }
+            .bento-3, .bento-5 { grid-column: span 1; }
+            .innovation-split { grid-template-columns: 1fr; gap: 4rem; box-sizing: border-box; max-width: 100%; }
+            .hero-title { font-size: clamp(3rem, 10vw, 5rem); padding: 0 1rem; box-sizing: border-box; }
+            .showroom-bridge { box-sizing: border-box; max-width: 100%; padding: 80px 2rem; text-align: center; margin: 0 auto 3rem; }
+            .bridge-content { margin: 0 auto; box-sizing: border-box; max-width: 100%; }
+            .marquee-content { font-size: 4rem; }
+            .stats-inner { gap: 3rem; box-sizing: border-box; max-width: 100%; }
+        }
+
+        /* Breakpoint: 768px */
+        @media (max-width: 768px) {
+            .home-section { padding: 60px 1.2rem; box-sizing: border-box; max-width: 100%; }
+            .fleet-grid { grid-template-columns: 1fr; gap: 2rem; box-sizing: border-box; max-width: 100%; }
+            .fleet-card { height: 450px; box-sizing: border-box; max-width: 100%; margin: 0 auto; width: 100%; }
+            .bento-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+            .bento-item { grid-column: span 1 !important; padding: 2rem; }
+            .stats-strip { padding: 4rem 0; box-sizing: border-box; max-width: 100%; }
+            .stats-inner { gap: 2rem; flex-direction: column; align-items: center; }
+            .stat-num { font-size: 3.5rem; }
+            .innovation-split { gap: 3rem; }
+            .innov-img-box { border-radius: 30px; box-sizing: border-box; max-width: 100%; }
+            #contactHome { grid-template-columns: 1fr !important; gap: 1rem; box-sizing: border-box; width: 100%; }
+            #contactHome input, #contactHome button { grid-column: span 1 !important; box-sizing: border-box; width: 100%; }
+            .review-grid { grid-template-columns: 1fr; gap: 2rem; box-sizing: border-box; max-width: 100%; }
+            .review-card { padding: 2.5rem 1.5rem; box-sizing: border-box; max-width: 100%; margin: 0 auto; width: 100%; }
+            .cta-btn { box-sizing: border-box; max-width: 100%; text-align: center; justify-content: center; }
+        }
+
+        /* Breakpoint: 480px */
+        @media (max-width: 480px) {
+            .hero-title { font-size: clamp(2rem, 8vw, 3.2rem); letter-spacing: -1px; margin-bottom: 1.5rem; }
+            .hero-subtitle { letter-spacing: 2px; font-size: 0.8rem; padding: 0 0.5rem; box-sizing: border-box; }
+            .cta-btn { width: 100%; justify-content: center; padding: 1rem 1.2rem; font-size: 0.9rem; box-sizing: border-box; }
+            .fleet-content { padding: 1.5rem; box-sizing: border-box; width: 100%; }
+            .fleet-content h3 { font-size: 1.4rem; }
+            .marquee-content { font-size: 2.2rem; }
+            .showroom-bridge { padding: 40px 1rem; border-radius: 20px; box-sizing: border-box; width: 100%; margin-bottom: 2rem; }
+            .bento-item { padding: 1.5rem; border-radius: 24px; }
+            .bento-item h3 { font-size: 1.3rem; }
+            .review-card p { font-size: 1.05rem; }
+            .stat-num { font-size: 2.8rem; }
+        }
+
+        /* Breakpoint: 320px */
+        @media (max-width: 320px) {
+            .hero-title { font-size: 1.8rem; letter-spacing: 0; }
+            .bento-item { padding: 1.2rem; }
+            .showroom-bridge { padding: 30px 0.8rem; }
+            .cta-btn { padding: 0.8rem 1rem; font-size: 0.85rem; }
+            .fleet-card { min-height: 380px; }
+            .stat-num { font-size: 2.4rem; }
+            .review-card { padding: 1.8rem 1.2rem; }
+        }
+
     </style>
 </head>
 
@@ -580,7 +785,7 @@
             <i class="fas fa-sun"></i>
         </button>
         <button id="rtl-toggle" class="toggle-btn" title="RTL / LTR">
-            ⇄
+            â‡„
         </button>
     </div>
 
@@ -667,7 +872,7 @@
 
     <!-- Small decorative footer -->
     <div style="position: fixed; bottom: 1.5rem; width: 100%; text-align: center; color: rgba(100,116,139,0.4); font-size: 0.7rem; letter-spacing: 2px; pointer-events: none;">
-        © VELOCITY MOTORS | ENGINEERED FOR EXCELLENCE
+        Â© VELOCITY MOTORS | ENGINEERED FOR EXCELLENCE
     </div>
 
     <!-- ===== SCRIPTS ===== -->
@@ -759,11 +964,11 @@
                     const password = document.getElementById('login-password').value;
 
                     if (!email || !password) {
-                        alert('⚠️ Please fill in all fields.');
+                        alert('âš ï¸ Please fill in all fields.');
                         return false;
                     }
 
-                    alert('🔐 Velocity Authentication Successful! Redirecting to your garage...');
+                    alert('ðŸ” Velocity Authentication Successful! Redirecting to your garage...');
                     window.location.href = 'index.html';
                     return true;
                 });
@@ -777,19 +982,19 @@
             if (googleBtn) {
                 googleBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    alert('🔐 Google sign-in would be implemented here.\n\n✨ Welcome back to Velocity!');
+                    alert('ðŸ” Google sign-in would be implemented here.\n\nâœ¨ Welcome back to Velocity!');
                 });
             }
             if (instagramBtn) {
                 instagramBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    alert('🔐 Instagram sign-in would be implemented here.\n\n✨ Welcome back to Velocity!');
+                    alert('ðŸ” Instagram sign-in would be implemented here.\n\nâœ¨ Welcome back to Velocity!');
                 });
             }
             if (facebookBtn) {
                 facebookBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    alert('🔐 Facebook sign-in would be implemented here.\n\n✨ Welcome back to Velocity!');
+                    alert('ðŸ” Facebook sign-in would be implemented here.\n\nâœ¨ Welcome back to Velocity!');
                 });
             }
         })();
