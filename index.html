@@ -100,17 +100,12 @@
         }
         .brand-name {
             font-size: 1.45rem;
-            font-weight: 800;
+            font-weight: 500;
             letter-spacing: -0.3px;
             background: linear-gradient(135deg, #1e2a3a, var(--accent));
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-        }
-        body.dark-mode .brand-name {
-            background: linear-gradient(135deg, #fff 30%, var(--accent) 80%);
-            background-clip: text;
-            -webkit-background-clip: text;
         }
 
         /* Desktop Navigation — clean & minimal */
@@ -122,7 +117,7 @@
         }
         .nav-links a {
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.95rem;
             padding: 0.5rem 1rem;
             display: inline-flex;
@@ -223,7 +218,7 @@
             padding: 0.45rem 1rem;
             border-radius: 40px;
             transition: var(--transition-smooth);
-            font-weight: 600;
+            font-weight: 500;
             backdrop-filter: blur(4px);
         }
         .login-btn {
@@ -310,7 +305,7 @@
         }
         .mobile-nav-list li a {
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 1.15rem;
             display: flex;
             align-items: center;
@@ -335,7 +330,7 @@
             align-items: center;
             cursor: pointer;
             padding: 0.4rem 0;
-            font-weight: 700;
+            font-weight: 500;
             font-size: 1.15rem;
             color: var(--text-primary);
         }
@@ -381,7 +376,7 @@
             cursor: pointer;
             transition: 0.2s;
             color: var(--text-primary);
-            font-weight: 600;
+            font-weight: 500;
         }
         .mobile-action-btn:hover {
             background: var(--accent);
@@ -411,7 +406,7 @@
         .demo-card h2 {
             font-size: 2.1rem;
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 500;
         }
         .demo-card p {
             color: var(--text-secondary);
@@ -422,7 +417,7 @@
             background: var(--accent);
             padding: 0.4rem 1.2rem;
             border-radius: 30px;
-            font-weight: 700;
+            font-weight: 500;
             font-size: 0.8rem;
             margin-bottom: 1.2rem;
         }
@@ -445,7 +440,7 @@
         }
         .footer-col h4 {
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 1.2rem;
             letter-spacing: -0.2px;
             position: relative;
@@ -537,7 +532,7 @@
             border: none;
             padding: 0.7rem 1.3rem;
             border-radius: 60px;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
             transition: 0.2s;
             color: #0a0c10;
@@ -723,7 +718,7 @@
             margin: 0 auto 1.5rem;
             text-transform: uppercase;
             letter-spacing: 8px;
-            font-weight: 700;
+            font-weight: 500;
             opacity: 0.8;
         }
 
@@ -786,7 +781,7 @@
         .fleet-content h3 {
             font-size: 2.2rem;
             margin-bottom: 0.8rem;
-            font-weight: 800;
+            font-weight: 500;
             color: #fff;
         }
 
@@ -822,7 +817,7 @@
             transform: scale(1.02);
         }
 
-        .bento-item h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; }
+        .bento-item h3 { font-size: 1.5rem; font-weight: 500; margin-bottom: 1rem; }
         .bento-item p { font-size: 1rem; color: var(--text-secondary); }
 
         .bento-item:hover h3, .bento-item:hover p, .bento-item:hover i {
@@ -876,7 +871,7 @@
             letter-spacing: 4px;
             font-size: 0.85rem;
             color: var(--text-secondary);
-            font-weight: 700;
+            font-weight: 500;
         }
 
         /* 5. Innovation - Split */
@@ -977,7 +972,7 @@
             color: #000;
             padding: 1.4rem 4rem;
             border-radius: 100px;
-            font-weight: 900;
+            font-weight: 500;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -1160,7 +1155,7 @@
             </div>
             <ul class="nav-links">
                 <li class="dropdown">
-                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="index.html">Home <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="index.html" class="home-drop-link">Home 1</a></li>
                         <li><a href="home2.html" class="home-drop-link">Home 2</a></li>
@@ -1226,39 +1221,64 @@
         </div>
     </section>
 
-    <!-- 2. THE FLEET: INTERACTIVE GRID -->
+    
+
+    <!-- 4. SPEED STATS: DYNAMIC COUNTERS -->
+    <div class="stats-strip">
+        <div class="home-container">
+            <div class="stats-inner">
+                <div class="stat-item">
+                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="1240" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
+                    <span class="stat-label">Max Horsepower</span>
+                </div>
+                <div class="stat-item">
+                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="1.82" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
+                    <span class="stat-label">Seconds (0-100)</span>
+                </div>
+                <div class="stat-item">
+                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="435" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
+                    <span class="stat-label">Top Speed km/h</span>
+                </div>
+                <div class="stat-item">
+                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="28" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
+                    <span class="stat-label">Global Patents</span>
+                </div>
+            </div>
+        </div>
+
+    <!-- 2\. THE FLEET: INTERACTIVE GRID -->
     <section class="home-section" id="fleet">
         <div class="home-container">
             <div style="text-align: center; margin-bottom: 6rem;">
-                <span style="color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 4px;">Elite Collection</span>
-                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 1rem; font-weight: 900; line-height: 1;">Masterpieces In Motion</h2>
+                <span style="color: var(--accent); font-weight: 500; text-transform: uppercase; letter-spacing: 4px;">Elite Collection</span>
+                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 1rem; font-weight: 500; line-height: 1;">Masterpieces In Motion</h2>
             </div>
             <div class="fleet-grid">
                 <div class="fleet-card">
                     <img src="images/fleet_1.png" alt="Velocity V1" class="fleet-img">
                     <div class="fleet-content">
-                        <span style="color: var(--accent); font-weight: 700; font-size: 0.8rem;">HYPERCAR SERIES</span>
+                        <span style="color: var(--accent); font-weight: 500; font-size: 0.8rem;">HYPERCAR SERIES</span>
                         <h3>V1 Dominator</h3>
                         <p>A carbon-fiber heart beating with 1,200HP. Redefining what's possible on four wheels.</p>
-                        <a href="#" style="color: #fff; text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">Configure Specs</a>
+                        <a href="#" style="color: #fff; text-decoration: none; font-weight: 500; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">Configure Specs</a>
                     </div>
                 </div>
                 <div class="fleet-card">
                     <img src="images/fleet_2.png" alt="Grand Tourer" class="fleet-img">
                     <div class="fleet-content">
-                        <span style="color: var(--accent); font-weight: 700; font-size: 0.8rem;">ELECTRIC FUTURE</span>
+                        <span style="color: var(--accent); font-weight: 500; font-size: 0.8rem;">ELECTRIC FUTURE</span>
                         <h3>GT-Volt Apex</h3>
                         <p>Silent power. Instant torque. The first electric grand tourer that speaks to the soul.</p>
-                        <a href="#" style="color: #fff; text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">View Journey</a>
+                        <a href="#" style="color: #fff; text-decoration: none; font-weight: 500; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">View Journey</a>
                     </div>
                 </div>
                 <div class="fleet-card">
                     <img src="images/engineering.png" alt="Aero Concept" class="fleet-img">
                     <div class="fleet-content">
-                        <span style="color: var(--accent); font-weight: 700; font-size: 0.8rem;">CONCEPT LAB</span>
+                        <span style="color: var(--accent); font-weight: 500; font-size: 0.8rem;">CONCEPT LAB</span>
                         <h3>Project X-Aero</h3>
                         <p>A glimpse into the next decade. Active aerodynamics that breathe with the wind.</p>
-                        <a href="#" style="color: #fff; text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">Laboratory Notes</a>
+                        <a href="#" style="color: #fff; text-decoration: none; font-weight: 500; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">Laboratory Notes</a>
                     </div>
                 </div>
             </div>
@@ -1301,29 +1321,6 @@
             </div>
         </div>
     </section>
-
-    <!-- 4. SPEED STATS: DYNAMIC COUNTERS -->
-    <div class="stats-strip">
-        <div class="home-container">
-            <div class="stats-inner">
-                <div class="stat-item">
-                    <span class="stat-num" data-val="1240">0</span>
-                    <span class="stat-label">Max Horsepower</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-num" data-val="1.82">0</span>
-                    <span class="stat-label">Seconds (0-100)</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-num" data-val="435">0</span>
-                    <span class="stat-label">Top Speed km/h</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-num" data-val="28">0</span>
-                    <span class="stat-label">Global Patents</span>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- 5. INNOVATION: VISUAL STORYTELLING -->
@@ -1331,7 +1328,7 @@
         <div class="home-container">
             <div class="innovation-split">
                 <div class="innov-content">
-                    <h2 style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; margin-bottom: 2.5rem; font-weight: 900;">Obsessed With <span style="color: var(--accent); font-style: italic;">Perfection</span></h2>
+                    <h2 style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; margin-bottom: 2.5rem; font-weight: 500;">Obsessed With <span style="color: var(--accent); font-style: italic;">Perfection</span></h2>
                     <p style="font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.6;">At Velocity, we don't follow trends. We create the benchmarks that the industry chases. Every curve is calculated, every stitch is intentional.</p>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
                         <div>
@@ -1357,27 +1354,17 @@
     <section class="home-section">
         <div class="home-container">
             <div style="text-align: center; margin-bottom: 6rem;">
-                <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900;">The Inner Circle</h2>
+                <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 500;">The Inner Circle</h2>
                 <p style="color: var(--text-secondary); font-size: 1.2rem;">Stories from those who refused to compromise.</p>
             </div>
             <div class="review-grid">
                 <div class="review-card">
                     <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 2.5rem; color: var(--text-primary);">"I've owned every major supercar on the market. Nothing compares to the V1's ability to make you feel like the"</p>
-                    <div style="display: flex; align-items: center; gap: 1.5rem;">
-                        <div>
-                            <strong style="display: block;">Alexander Thorne</strong>
-                            <span style="font-size: 0.8rem; color: var(--accent); text-transform: uppercase;">Tech Entrepreneur</span>
-                        </div>
-                    </div>
+                    <div style="text-align: right;"><strong style="display: block;">Alexander Thorne</strong><span style="font-size: 0.8rem; color: var(--accent); text-transform: uppercase;">Tech Entrepreneur</span></div>
                 </div>
                 <div class="review-card">
                     <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 2.5rem; color: var(--text-primary);">"The GT-Volt is a masterpiece of design. It's the first time I've felt that luxury and sustainability weren't at odds, but rather perfectly synthesized."</p>
-                    <div style="display: flex; align-items: center; gap: 1.5rem;">
-                        <div>
-                            <strong style="display: block;">Helena Rossi</strong>
-                            <span style="font-size: 0.8rem; color: var(--accent); text-transform: uppercase;">F1 Pilot</span>
-                        </div>
-                    </div>
+                    <div style="text-align: right;"><strong style="display: block;">Helena Rossi</strong><span style="font-size: 0.8rem; color: var(--accent); text-transform: uppercase;">F1 Pilot</span></div>
                 </div>
             </div>
         </div>
@@ -1406,7 +1393,7 @@
             <div class="footer-col">
                 <div class="logo-area" style="margin-bottom: 1.5rem;">
                     <i class="fas fa-car-side logo-icon" style="color: var(--accent); font-size: 1.8rem; margin-right: 0.8rem;"></i>
-                    <span class="brand-name" style="font-weight: 900; letter-spacing: 2px; font-size: 1.5rem;">VELOCITY</span>
+                    <span class="brand-name" style="font-weight: 500; letter-spacing: 2px; font-size: 1.5rem;">VELOCITY</span>
                 </div>
                 <p>Redefining automotive passion with cutting-edge engineering and bespoke concierge services. Drive the extraordinary.</p>
                 <div class="social-links">

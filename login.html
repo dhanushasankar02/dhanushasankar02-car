@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" class="scroll-smooth">
 
 <head>
@@ -232,7 +232,7 @@
         .shield-btn {
             background: #ff6a1a;
             color: #0a0c10;
-            font-weight: 700;
+            font-weight: 500;
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
             transition: all 0.3s ease;
@@ -364,17 +364,12 @@
 
         .brand-name {
             font-size: 1.45rem;
-            font-weight: 800;
+            font-weight: 500;
             letter-spacing: -0.3px;
             background: linear-gradient(135deg, #111318 30%, #ff6a1a 80%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             transition: transform 0.3s ease;
-        }
-
-        .dark .brand-name {
-            background: linear-gradient(135deg, #fff 30%, #ff6a1a 80%);
-            -webkit-background-clip: text;
         }
 
         .logo-area:hover .logo-icon,
@@ -386,7 +381,7 @@
         .welcome-title {
             font-family: 'Inter', sans-serif;
             font-size: 1.6rem;
-            font-weight: 700;
+            font-weight: 500;
             color: #ff6a1a;
             margin-top: 0.5rem;
             margin-bottom: 0.1rem;
@@ -846,6 +841,9 @@
             </div>
 
             <div class="social-login">
+                <a href="#" class="social-btn" id="appleLoginBtn" title="Sign in with Apple">
+                    <i class="fab fa-apple"></i>
+                </a>
                 <a href="#" class="social-btn" id="googleLoginBtn" title="Sign in with Google">
                     <i class="fab fa-google"></i>
                 </a>
@@ -975,20 +973,27 @@
             }
 
             // ---------- SOCIAL LOGIN ALERTS ----------
+            const appleBtn = document.getElementById('appleLoginBtn');
             const googleBtn = document.getElementById('googleLoginBtn');
             const instagramBtn = document.getElementById('instagramLoginBtn');
             const facebookBtn = document.getElementById('facebookLoginBtn');
 
+            if (appleBtn) {
+                appleBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert(' Apple sign-in would be implemented here.\n\n✨ Welcome back to Velocity!');
+                });
+            }
             if (googleBtn) {
                 googleBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    alert('ðŸ” Google sign-in would be implemented here.\n\nâœ¨ Welcome back to Velocity!');
+                    alert('🔑 Google sign-in would be implemented here.\n\n✨ Welcome back to Velocity!');
                 });
             }
             if (instagramBtn) {
                 instagramBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    alert('ðŸ” Instagram sign-in would be implemented here.\n\nâœ¨ Welcome back to Velocity!');
+                    alert('🔑 Instagram sign-in would be implemented here.\n\n✨ Welcome back to Velocity!');
                 });
             }
             if (facebookBtn) {

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -101,17 +101,12 @@
         }
         .brand-name {
             font-size: 1.45rem;
-            font-weight: 800;
+            font-weight: 500;
             letter-spacing: -0.3px;
             background: linear-gradient(135deg, #1e2a3a, var(--accent));
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-        }
-        body.dark-mode .brand-name {
-            background: linear-gradient(135deg, #fff 30%, var(--accent) 80%);
-            background-clip: text;
-            -webkit-background-clip: text;
         }
 
         /* Desktop Navigation â€” clean & minimal */
@@ -123,7 +118,7 @@
         }
         .nav-links a {
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.95rem;
             padding: 0.5rem 1rem;
             display: inline-flex;
@@ -224,7 +219,7 @@
             padding: 0.45rem 1rem;
             border-radius: 40px;
             transition: var(--transition-smooth);
-            font-weight: 600;
+            font-weight: 500;
             backdrop-filter: blur(4px);
         }
         .login-btn {
@@ -311,7 +306,7 @@
         }
         .mobile-nav-list li a {
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 1.15rem;
             display: flex;
             align-items: center;
@@ -336,7 +331,7 @@
             align-items: center;
             cursor: pointer;
             padding: 0.4rem 0;
-            font-weight: 700;
+            font-weight: 500;
             font-size: 1.15rem;
             color: var(--text-primary);
         }
@@ -382,7 +377,7 @@
             cursor: pointer;
             transition: 0.2s;
             color: var(--text-primary);
-            font-weight: 600;
+            font-weight: 500;
         }
         .mobile-action-btn:hover {
             background: var(--accent);
@@ -412,7 +407,7 @@
         .demo-card h2 {
             font-size: 2.1rem;
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 500;
         }
         .demo-card p {
             color: var(--text-secondary);
@@ -423,7 +418,7 @@
             background: var(--accent);
             padding: 0.4rem 1.2rem;
             border-radius: 30px;
-            font-weight: 700;
+            font-weight: 500;
             font-size: 0.8rem;
             margin-bottom: 1.2rem;
         }
@@ -446,7 +441,7 @@
         }
         .footer-col h4 {
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 1.2rem;
             letter-spacing: -0.2px;
             position: relative;
@@ -538,7 +533,7 @@
             border: none;
             padding: 0.7rem 1.3rem;
             border-radius: 60px;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
             transition: 0.2s;
             color: #0a0c10;
@@ -644,7 +639,7 @@
             margin: 0 auto 1.5rem;
             text-transform: uppercase;
             letter-spacing: 8px;
-            font-weight: 700;
+            font-weight: 500;
             opacity: 0.8;
         }
 
@@ -753,7 +748,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 25vw;
-            font-weight: 900;
+            font-weight: 500;
             color: rgba(255,255,255,0.02);
             z-index: 0;
             pointer-events: none;
@@ -870,7 +865,7 @@
             padding: 1.2rem 3rem;
             background: var(--accent);
             color: #000;
-            font-weight: 800;
+            font-weight: 500;
             text-decoration: none;
             border-radius: 50px;
             font-size: 1.1rem;
@@ -960,14 +955,18 @@
         }
 
         .hero-title {
-            background: linear-gradient(to bottom, var(--text-primary) 0%, var(--accent) 100%) !important;
-            -webkit-background-clip: text !important;
-            color: transparent !important;
-            text-shadow: none !important;
+            background: none !important;
+            -webkit-text-fill-color: initial !important;
+            -webkit-background-clip: initial !important;
+            color: #000 !important;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
         }
         body.dark-mode .hero-title {
             background: linear-gradient(to bottom, #fff 40%, var(--accent) 100%) !important;
             -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            color: transparent !important;
+            text-shadow: none !important;
         }
 
         .hero-subtitle {
@@ -1263,7 +1262,7 @@
             </a>
             <ul class="nav-links">
                 <li class="dropdown">
-                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="index.html">Home <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="index.html" class="home-drop-link"> Home 1</a></li>
                         <li><a href="home2.html" class="home-drop-link"> Home 2</a></li>
@@ -1320,8 +1319,34 @@
             <div class="hero-text-content">
                 <span class="hero-subtitle">EST. 2005</span>
                 <h1 class="hero-title">Beyond the <br>Limit.</h1>
-                <p style="font-size: 1.25rem; color: var(--text-black); margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">Velocity is more than a brand; it's a movement of automotive perfectionists dedicated to the art of the drive.</p>
+                <p style="font-size: 1.25rem; color: #000; font-weight: 500; margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">Velocity is more than a brand; it's a movement of automotive perfectionists dedicated to the art of the drive.</p>
                 <a href="#about-philosophy" class="login-btn" style="padding: 1.2rem 3rem; text-decoration: none; display: inline-block;">Discover Our DNA</a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- SECTION 5: STATS -->
+    <section class="about-section stats-section">
+        <div class="about-container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>2.5K+</h3>
+                    <p>Masterpieces Built</p>
+                </div>
+                <div class="stat-box">
+                    <h3>15</h3>
+                    <p>Global Awards</p>
+                </div>
+                <div class="stat-box">
+                    <h3>100%</h3>
+                    <p>Client Satisfaction</p>
+                </div>
+                <div class="stat-box">
+                    <h3>50+</h3>
+                    <p>Elite Engineers</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1410,30 +1435,6 @@
         </div>
     </section>
 
-    <!-- SECTION 5: STATS -->
-    <section class="about-section stats-section">
-        <div class="about-container">
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <h3>2.5K+</h3>
-                    <p>Masterpieces Built</p>
-                </div>
-                <div class="stat-box">
-                    <h3>15</h3>
-                    <p>Global Awards</p>
-                </div>
-                <div class="stat-box">
-                    <h3>100%</h3>
-                    <p>Client Satisfaction</p>
-                </div>
-                <div class="stat-box">
-                    <h3>50+</h3>
-                    <p>Elite Engineers</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- SECTION 6: CONCIERGE -->
     <section class="about-section concierge-section">
         <div class="about-container concierge-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
@@ -1456,7 +1457,7 @@
     <section class="about-section" style="background: var(--bg-secondary);">
         <div class="about-container" style="text-align: center;">
             <h2 style="font-style: italic; font-weight: 300; font-size: 2.2rem; max-width: 900px; margin: 0 auto;">"We don't just build cars. We build the extensions of the driver's soul. If it doesn't make your heart race, it isn't a Velocity."</h2>
-            <p style="margin-top: 2rem; font-weight: 700; letter-spacing: 2px; color: var(--accent);">â€” MARCO VINCENZO, FOUNDER</p>
+            <p style="margin-top: 2rem; font-weight: 500; letter-spacing: 2px; color: var(--accent);">â€” MARCO VINCENZO, FOUNDER</p>
         </div>
     </section>
 
@@ -1477,7 +1478,7 @@
             <div class="footer-col">
                 <div class="logo-area" style="margin-bottom: 1.5rem;">
                     <i class="fas fa-car-side logo-icon" style="color: var(--accent); font-size: 1.8rem; margin-right: 0.8rem;"></i>
-                    <span class="brand-name" style="font-weight: 900; letter-spacing: 2px; font-size: 1.5rem;">VELOCITY</span>
+                    <span class="brand-name" style="font-weight: 500; letter-spacing: 2px; font-size: 1.5rem;">VELOCITY</span>
                 </div>
                 <p>Redefining automotive passion with cutting-edge engineering and bespoke concierge services. Drive the extraordinary.</p>
                 <div class="social-links">

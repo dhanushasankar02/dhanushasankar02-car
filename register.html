@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" class="scroll-smooth">
 
 <head>
@@ -232,7 +232,7 @@
         .shield-btn {
             background: #ff6a1a;
             color: #0a0c10;
-            font-weight: 700;
+            font-weight: 500;
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
             transition: all 0.3s ease;
@@ -364,17 +364,12 @@
 
         .brand-name {
             font-size: 1.45rem;
-            font-weight: 800;
+            font-weight: 500;
             letter-spacing: -0.3px;
             background: linear-gradient(135deg, #111318 30%, #ff6a1a 80%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             transition: transform 0.3s ease;
-        }
-
-        .dark .brand-name {
-            background: linear-gradient(135deg, #fff 30%, #ff6a1a 80%);
-            -webkit-background-clip: text;
         }
 
         .logo-area:hover .logo-icon,
@@ -386,7 +381,7 @@
         .welcome-title {
             font-family: 'Inter', sans-serif;
             font-size: 1.6rem;
-            font-weight: 700;
+            font-weight: 500;
             color: #ff6a1a;
             margin-top: 0.5rem;
             margin-bottom: 0.1rem;
@@ -931,6 +926,9 @@
             </div>
 
             <div class="social-login">
+                <a href="#" class="social-btn" id="appleSignupBtn" title="Sign up with Apple">
+                    <i class="fab fa-apple"></i>
+                </a>
                 <a href="#" class="social-btn" id="googleSignupBtn" title="Sign up with Google">
                     <i class="fab fa-google"></i>
                 </a>
@@ -1044,20 +1042,27 @@
             });
 
             // ---------- SOCIAL BUTTONS (Google, Instagram, Facebook) interactive demo ----------
+            const appleBtn = document.getElementById('appleSignupBtn');
             const googleBtn = document.getElementById('googleSignupBtn');
             const instagramBtn = document.getElementById('instagramSignupBtn');
             const facebookBtn = document.getElementById('facebookSignupBtn');
 
+            if (appleBtn) {
+                appleBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('🍎 Apple sign-up would be implemented here.\n\n✨ Welcome to Velocity!');
+                });
+            }
             if (googleBtn) {
                 googleBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    alert('ðŸ” Google sign-up would be implemented here.\n\nâœ¨ Welcome to Velocity!');
+                    alert('🌐 Google sign-up would be implemented here.\n\n✨ Welcome to Velocity!');
                 });
             }
             if (instagramBtn) {
                 instagramBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    alert('ðŸ” Instagram sign-up would be implemented here.\n\nâœ¨ Welcome to Velocity!');
+                    alert('📷 Instagram sign-up would be implemented here.\n\n✨ Welcome to Velocity!');
                 });
             }
             if (facebookBtn) {

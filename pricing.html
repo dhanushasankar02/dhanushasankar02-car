@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -100,17 +100,12 @@
         }
         .brand-name {
             font-size: 1.45rem;
-            font-weight: 800;
+            font-weight: 500;
             letter-spacing: -0.3px;
             background: linear-gradient(135deg, #1e2a3a, var(--accent));
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-        }
-        body.dark-mode .brand-name {
-            background: linear-gradient(135deg, #fff 30%, var(--accent) 80%);
-            background-clip: text;
-            -webkit-background-clip: text;
         }
 
         /* Desktop Navigation â€” clean & minimal */
@@ -122,7 +117,7 @@
         }
         .nav-links a {
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.95rem;
             padding: 0.5rem 1rem;
             display: inline-flex;
@@ -223,7 +218,7 @@
             padding: 0.45rem 1rem;
             border-radius: 40px;
             transition: var(--transition-smooth);
-            font-weight: 600;
+            font-weight: 500;
             backdrop-filter: blur(4px);
         }
         .login-btn {
@@ -310,7 +305,7 @@
         }
         .mobile-nav-list li a {
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 1.15rem;
             display: flex;
             align-items: center;
@@ -335,7 +330,7 @@
             align-items: center;
             cursor: pointer;
             padding: 0.4rem 0;
-            font-weight: 700;
+            font-weight: 500;
             font-size: 1.15rem;
             color: var(--text-primary);
         }
@@ -381,7 +376,7 @@
             cursor: pointer;
             transition: 0.2s;
             color: var(--text-primary);
-            font-weight: 600;
+            font-weight: 500;
         }
         .mobile-action-btn:hover {
             background: var(--accent);
@@ -411,7 +406,7 @@
         .demo-card h2 {
             font-size: 2.1rem;
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 500;
         }
         .demo-card p {
             color: var(--text-secondary);
@@ -422,7 +417,7 @@
             background: var(--accent);
             padding: 0.4rem 1.2rem;
             border-radius: 30px;
-            font-weight: 700;
+            font-weight: 500;
             font-size: 0.8rem;
             margin-bottom: 1.2rem;
         }
@@ -445,7 +440,7 @@
         }
         .footer-col h4 {
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 1.2rem;
             letter-spacing: -0.2px;
             position: relative;
@@ -537,7 +532,7 @@
             border: none;
             padding: 0.7rem 1.3rem;
             border-radius: 60px;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
             transition: 0.2s;
             color: #0a0c10;
@@ -652,6 +647,28 @@
             z-index: 2;
         }
 
+.cta-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1.2rem 3rem;
+            background: var(--accent);
+            color: #000;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            border: 2px solid var(--accent);
+            text-align: center;
+        }
+        .cta-btn:hover {
+            transform: scale(1.05);
+            background: transparent;
+            color: var(--accent);
+        }
+
         /* 2. Tier Cards - Redesigned */
         .tier-grid {
             display: grid;
@@ -695,7 +712,7 @@
 
         .tier-price {
             font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
+            font-weight: 500;
             margin: 2rem 0;
             color: var(--accent);
         }
@@ -741,13 +758,13 @@
         .blueprint-table th {
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-weight: 800;
+            font-weight: 500;
             color: var(--accent);
         }
 
         .blueprint-table td:first-child {
             text-align: left;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--text-primary);
         }
 
@@ -843,6 +860,19 @@
         body.light-mode .pr-hero p {
             color: var(--text-secondary) !important;
             text-shadow: none !important;
+        }
+body.light-mode .cta-btn:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+        body.light-mode .tier-card.featured .cta-btn {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+        body.light-mode .tier-card.featured .cta-btn:hover {
+            background: transparent;
+            color: #000;
         }
         body.light-mode .tier-card {
             background: #fff;
@@ -1160,7 +1190,7 @@
             </div>
             <ul class="nav-links">
                 <li class="dropdown">
-                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="index.html">Home <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="index.html" class="home-drop-link"> Home 1</a></li>
                         <li><a href="home2.html" class="home-drop-link"> Home 2</a></li>
@@ -1227,7 +1257,7 @@
             <div class="tier-grid">
                 <!-- Enthusiast -->
                 <div class="tier-card">
-                    <span style="font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--accent);">V-Entry</span>
+                    <span style="font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--accent);">V-Entry</span>
                     <div class="tier-price">$299<span>/mo</span></div>
                     <p style="margin-bottom: 2rem; font-size: 0.9rem; color: var(--text-secondary);">The foundation of velocity. Access to our signature fleet and member events.</p>
                     <ul class="tier-features">
@@ -1236,11 +1266,11 @@
                         <li><i class="fas fa-check-circle"></i> Digital Service Logs</li>
                         <li><i class="fas fa-check-circle"></i> Global Home Delivery</li>
                     </ul>
-                    <a href="#" class="h2-btn" style="display: block; text-align: center; text-decoration: none;">Initialize</a>
+                    <a href="#" class="cta-btn" style="display: block; text-align: center; text-decoration: none; width: 100%;">Initialize</a>
                 </div>
                 <!-- Collector (Industrial White) -->
                 <div class="tier-card featured">
-                    <span style="font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">V-Elite</span>
+                    <span style="font-weight: 500; letter-spacing: 2px; text-transform: uppercase;">V-Elite</span>
                     <div class="tier-price">$899<span>/mo</span></div>
                     <p style="margin-bottom: 2rem; font-size: 0.9rem; opacity: 0.8;">Our most popular tier. Full hypercar access and global concierge integration.</p>
                     <ul class="tier-features">
@@ -1249,11 +1279,11 @@
                         <li><i class="fas fa-check-circle"></i> Private Garage Access</li>
                         <li><i class="fas fa-check-circle"></i> Priority Maintenance</li>
                     </ul>
-                    <a href="#" class="h2-btn" style="display: block; text-align: center; text-decoration: none; border-color: #000; color: #000;">Select Elite</a>
+                    <a href="#" class="cta-btn" style="display: block; text-align: center; text-decoration: none; width: 100%;">Select Elite</a>
                 </div>
                 <!-- Elite -->
                 <div class="tier-card">
-                    <span style="font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--accent);">V-Infinity</span>
+                    <span style="font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--accent);">V-Infinity</span>
                     <div class="tier-price">Custom</div>
                     <p style="margin-bottom: 2rem; font-size: 0.9rem; color: var(--text-secondary);">The ultimate automotive lifestyle. Tailored to your global collection needs.</p>
                     <ul class="tier-features">
@@ -1262,7 +1292,7 @@
                         <li><i class="fas fa-check-circle"></i> Personal Mechanic Team</li>
                         <li><i class="fas fa-check-circle"></i> Custom Commisions</li>
                     </ul>
-                    <a href="#" class="h2-btn" style="display: block; text-align: center; text-decoration: none;">Consult</a>
+                    <a href="#" class="cta-btn" style="display: block; text-align: center; text-decoration: none; width: 100%;">Consult</a>
                 </div>
             </div>
         </div>
@@ -1421,7 +1451,7 @@
             <div class="footer-col">
                 <div class="logo-area" style="margin-bottom: 1.5rem;">
                     <i class="fas fa-car-side logo-icon" style="color: var(--accent); font-size: 1.8rem; margin-right: 0.8rem;"></i>
-                    <span class="brand-name" style="font-weight: 900; letter-spacing: 2px; font-size: 1.5rem;">VELOCITY</span>
+                    <span class="brand-name" style="font-weight: 500; letter-spacing: 2px; font-size: 1.5rem;">VELOCITY</span>
                 </div>
                 <p>Redefining automotive passion with cutting-edge engineering and bespoke concierge services. Drive the extraordinary.</p>
                 <div class="social-links">
