@@ -1029,6 +1029,23 @@
             .cta-btn { box-sizing: border-box; max-width: 100%; text-align: center; justify-content: center; }
         }
 
+        /* Light Mode Visibility Fixes */
+        body:not(.dark-mode) .exp-card h2,
+        body:not(.dark-mode) .exp-card p,
+        body:not(.dark-mode) .exp-card span,
+        body:not(.dark-mode) .exp-card .login-btn {
+            color: var(--text-primary) !important;
+        }
+        body:not(.dark-mode) .series-overlay h2,
+        body:not(.dark-mode) .series-overlay span {
+            color: #fff !important; /* Ensure it stays white on images */
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        }
+        body:not(.dark-mode) .parallax-horizon h2 {
+            color: #fff !important;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+        }
+
         /* Breakpoint: 480px */
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(2rem, 8vw, 3.2rem); letter-spacing: -1px; margin-bottom: 1.5rem; }

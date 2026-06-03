@@ -1075,71 +1075,71 @@
 
 
         /* ----- LIGHT MODE VISIBILITY FIXES ----- */
-        body.light-mode .home-section {
+        body:not(.dark-mode) .home-section {
             background: var(--bg-primary);
         }
 
 
-        body.light-mode .fleet-card {
+        body:not(.dark-mode) .fleet-card {
             background: var(--bg-secondary);
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        body.light-mode .fleet-content {
+        body:not(.dark-mode) .fleet-content {
             background: linear-gradient(to top, var(--bg-secondary) 0%, rgba(255,255,255,0.9) 70%, transparent 100%);
         }
 
-        body.light-mode .fleet-content h3, 
-        body.light-mode .fleet-content p,
-        body.light-mode .fleet-content a {
-            color: var(--text-primary) !important;
+        body:not(.dark-mode) .fleet-content h3, 
+        body:not(.dark-mode) .fleet-content p,
+        body:not(.dark-mode) .fleet-content a,
+        body:not(.dark-mode) .fleet-content span {
+            color: var(--text-primary) ;
         }
 
-        body.light-mode .stats-strip {
+        body:not(.dark-mode) .stats-strip {
             background: var(--bg-secondary);
-            border-color: rgba(0,0,0,0.05);
         }
 
-        body.light-mode .stat-label {
+        body:not(.dark-mode) .stat-label {
             color: var(--text-secondary);
         }
 
-        body.light-mode .bento-item {
+        body:not(.dark-mode) .bento-item {
             background: var(--bg-secondary);
             box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
 
-        body.light-mode .bento-item:hover {
+        body:not(.dark-mode) .bento-item:hover {
             background: var(--accent);
         }
 
-        body.light-mode .review-card {
+        body:not(.dark-mode) .review-card {
             background: var(--bg-secondary);
             box-shadow: 0 15px 35px rgba(0,0,0,0.05);
             border-color: rgba(0,0,0,0.05);
         }
 
-        body.light-mode .review-card p,
-        body.light-mode .review-card strong {
+        body:not(.dark-mode) .review-card p,
+        body:not(.dark-mode) .review-card strong {
             color: var(--text-primary);
         }
 
-        body.light-mode .showroom-bridge {
+        body:not(.dark-mode) .showroom-bridge {
             background: linear-gradient(to right, var(--bg-secondary) 20%, rgba(255,255,255,0.8) 100%), url('images/showroom.png') center/cover;
             border-color: rgba(0,0,0,0.05);
         }
 
-        body.light-mode #contactHome input {
+        body:not(.dark-mode) #contactHome input {
             background: #fff;
             color: var(--text-primary);
             border-color: #ddd;
         }
 
-        body.light-mode .marquee-container {
+        body:not(.dark-mode) .marquee-container {
             background: var(--text-primary);
         }
 
-        body.light-mode .marquee-content {
+        body:not(.dark-mode) .marquee-content {
             color: var(--bg-primary);
         }
     </style>
@@ -1250,8 +1250,8 @@
     <section class="home-section" id="fleet">
         <div class="home-container">
             <div style="text-align: center; margin-bottom: 6rem;">
-                <span style="color: var(--accent); font-weight: 500; text-transform: uppercase; letter-spacing: 4px;">Elite Collection</span>
-                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 1rem; font-weight: 500; line-height: 1;">Masterpieces In Motion</h2>
+                <span style="color: var(--text-primary) !important; font-weight: 500; text-transform: uppercase; letter-spacing: 4px;">Elite Collection</span>
+                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 1rem; font-weight: 500; line-height: 1; color: var(--text-primary) !important;">Masterpieces In Motion</h2>
             </div>
             <div class="fleet-grid">
                 <div class="fleet-card">

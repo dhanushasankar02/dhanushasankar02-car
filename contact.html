@@ -715,7 +715,7 @@
             transition: var(--transition-smooth);
         }
 
-        body.light-mode .map-section {
+        body:not(.dark-mode) .map-section {
             filter: grayscale(0.5) opacity(0.9);
         }
 
