@@ -107,6 +107,12 @@
             -webkit-background-clip: text;
             color: transparent;
         }
+        body.dark-mode .brand-name {
+            background: linear-gradient(135deg, #ffffff, var(--accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
 
         /* Desktop Navigation â€” clean & minimal */
         .nav-links {
@@ -1096,12 +1102,12 @@
                 <li class="dropdown">
                     <a href="index.html">Home <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="index.html" class="home-drop-link">Home 1</a></li>
-                        <li><a href="home2.html" class="home-drop-link">Home 2</a></li>
+                        <li><a href="index.html" class="home-drop-link"> Home 1</a></li>
+                        <li><a href="home2.html" class="home-drop-link"> Home 2</a></li>
                     </ul>
                 </li>
                 <li><a href="about.html"> About</a></li>
-                <li><a href="service.html"> Services</a></li>
+                <li><a href="service.html">Services</a></li>
                 <li><a href="pricing.html"> Pricing</a></li>
                 <li><a href="gallery.html"> Gallery</a></li>
                 <li><a href="booking.html"> Booking</a></li>
@@ -1110,7 +1116,7 @@
             <div class="nav-actions">
                 <button class="icon-btn" id="darkModeToggle" aria-label="Dark mode"><i class="fas fa-moon"></i></button>
                 <button class="rtl-btn" id="rtlToggle" aria-label="RTL"><i class="fas fa-exchange-alt"></i> RTL</button>
-                <button class="login-btn" id="loginBtn"><i class="fas fa-user-circle"></i> <span>Login</span></button>
+                <button class="login-btn" onclick="window.location.href='login.html'"><i class="fas fa-user-circle"></i> <span>Login</span></button>
                 <button class="menu-toggle" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
             </div>
         </div>
@@ -1141,7 +1147,7 @@
         <div class="mobile-actions">
             <button class="mobile-action-btn" id="mobileDarkToggle"><i class="fas fa-moon"></i> Dark Mode</button>
             <button class="mobile-action-btn" id="mobileRtlToggle"><i class="fas fa-exchange-alt"></i> RTL Layout</button>
-            <button class="mobile-action-btn" id="mobileLoginBtn"><i class="fas fa-user-circle"></i> Login</button>
+            <button class="mobile-action-btn" id="mobileLoginBtn" onclick="window.location.href='login.html'"><i class="fas fa-user-circle"></i> Login</button>
         </div>
     </div>
 
