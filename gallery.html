@@ -1375,8 +1375,15 @@
             if (darkToggleDesktop) darkToggleDesktop.addEventListener('click', toggleDarkMode);
             if (mobileDarkToggle) mobileDarkToggle.addEventListener('click', toggleDarkMode);
 
-            // Init Dark Mode: Always default to light mode on page load as requested
-            updateDarkIcons(false);
+                        // Init Dark Mode: Check localStorage for persistence across pages
+            const savedTheme = localStorage.getItem('velocity-theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                updateDarkIcons(true);
+            } else {
+                document.body.classList.remove('dark-mode');
+                updateDarkIcons(false);
+            }
 
             // ----- 2. RTL Toggle (preserves layout, closes mobile)-----
             function toggleRTL() {
