@@ -107,6 +107,12 @@
             -webkit-background-clip: text;
             color: transparent;
         }
+        body.dark-mode .brand-name {
+            background: linear-gradient(135deg, #ffffff, var(--accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
 
         /* Desktop Navigation â€” clean & minimal */
         .nav-links {
@@ -620,7 +626,7 @@
         .hero-title-group h1 {
             font-family: var(--serif-font);
             font-size: var(--fluid-h1);
-            font-weight: 300;
+            font-weight: 400;
             font-style: italic;
             line-height: 0.8;
             margin-bottom: 2rem;
@@ -948,16 +954,15 @@
             .social-large-icons { gap: 1rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center; }
             .social-icon-box { width: 60px; height: 60px; font-size: 1.5rem; }
             .final-split-section {
-            max-width: 1200px;
-            margin: 4rem auto;
+            margin: 2rem auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            padding: 4rem 2rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 2rem 1.2rem;
             border-top: 1px solid var(--border-light);
             box-sizing: border-box;
             max-width: 100%;
-            align-items: center;
+            align-items: flex-start;
         }
             .split-box { align-items: center; box-sizing: border-box; max-width: 100%; }
             .virtual-tour { height: 350px; box-sizing: border-box; max-width: 100%; }
@@ -990,7 +995,7 @@
             border-top: 1px solid var(--border-light);
             box-sizing: border-box;
             max-width: 100%;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .split-box {
@@ -1288,7 +1293,7 @@
         <!-- 2. CONTACT HUB: Fast Access -->
         <section class="contact-hub">
             <div class="hub-card">
-                <div class="hub-icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="hub-icon"><i class="fas fa-phone"></i></div>
                 <h3>Call Our Experts</h3>
                 <p>Direct line to our concierge team for immediate assistance.</p>
                 <a href="tel:+15551234567" style="color: var(--accent); font-weight: 500; text-decoration: none;">+1 (555) 123-4567</a>
@@ -1394,22 +1399,22 @@
                 <div class="dept-card">
                     <h4>Sales & Acquisitions</h4>
                     <p style="font-size: 0.9rem; color: var(--text-secondary);">For custom builds and vehicle purchases.</p>
-                    <p style="font-weight: 500; margin-top: 1rem;"><i class="fas fa-phone-alt" style="margin-right: 8px; color: var(--accent);"></i>+1 555-0101</p><p style="font-weight: 500; margin-top: 0.5rem;"><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent);"></i>sales@velocity.com</p>
+                    <p style="font-weight: 500; margin-top: 1rem;"><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent);"></i>+1 555-0101</p><p style="font-weight: 500; margin-top: 0.5rem;"><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent);"></i>sales@velocity.com</p>
                 </div>
                 <div class="dept-card">
                     <h4>Technical Support</h4>
                     <p style="font-size: 0.9rem; color: var(--text-secondary);">Maintenance, parts, and telemetry assistance.</p>
-                    <p style="font-weight: 500; margin-top: 1rem;"><i class="fas fa-phone-alt" style="margin-right: 8px; color: var(--accent);"></i>+1 555-0102</p><p style="font-weight: 500; margin-top: 0.5rem;"><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent);"></i>tech@velocity.com</p>
+                    <p style="font-weight: 500; margin-top: 1rem;"><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent);"></i>+1 555-0102</p><p style="font-weight: 500; margin-top: 0.5rem;"><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent);"></i>tech@velocity.com</p>
                 </div>
                 <div class="dept-card">
                     <h4>Media Relations</h4>
                     <p style="font-size: 0.9rem; color: var(--text-secondary);">Press kits, events, and brand partnerships.</p>
-                    <p style="font-weight: 500; margin-top: 1rem;"><i class="fas fa-phone-alt" style="margin-right: 8px; color: var(--accent);"></i>+1 555-0103</p><p style="font-weight: 500; margin-top: 0.5rem;"><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent);"></i>press@velocity.com</p>
+                    <p style="font-weight: 500; margin-top: 1rem;"><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent);"></i>+1 555-0103</p><p style="font-weight: 500; margin-top: 0.5rem;"><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent);"></i>press@velocity.com</p>
                 </div>
                 <div class="dept-card">
                     <h4>VIP Concierge</h4>
                     <p style="font-size: 0.9rem; color: var(--text-secondary);">Priority service for Black-tier members.</p>
-                    <p style="font-weight: 500; margin-top: 1rem;"><i class="fas fa-phone-alt" style="margin-right: 8px; color: var(--accent);"></i>+1 555-0104</p><p style="font-weight: 500; margin-top: 0.5rem;"><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent);"></i>vip@velocity.com</p>
+                    <p style="font-weight: 500; margin-top: 1rem;"><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent);"></i>+1 555-0104</p><p style="font-weight: 500; margin-top: 0.5rem;"><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent);"></i>vip@velocity.com</p>
                 </div>
             </div>
         </section>
@@ -1434,7 +1439,7 @@
             <div class="tour-content">
                 <h2>Experience the Lounge.</h2>
                 <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-bottom: 2rem;">Take a 360Â° virtual tour of our Palo Alto facility.</p>
-                <button class="demo-badge">Start Tour <i class="fas fa-vr-cardboard"></i></button>
+                <button class="cta-btn" style="border: none; font-size: 1rem; cursor: pointer;">
             </div>
         </section>
 
@@ -1482,7 +1487,7 @@
                     <i class="fas fa-car-side logo-icon" style="color: var(--accent); font-size: 1.8rem; margin-right: 0.8rem;"></i>
                     <span class="brand-name" style="font-weight: 500; letter-spacing: 2px; font-size: 1.5rem;">VELOCITY</span>
                 </div>
-                <p>Redefining automotive passion with cutting-edge engineering and bespoke concierge services. Drive the extraordinary.</p>
+                <p>Redefining automotive care with cutting-edge paint protection, ceramic coatings, and premium window tinting. Preserve the extraordinary.</p>
                 <div class="social-links">
                     <a href="#" style="text-decoration: none;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" style="text-decoration: none;" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -1514,7 +1519,7 @@
             </div>
             <div class="footer-col">
                 <h4>Newsletter</h4>
-                <p>Get exclusive offers and new model alerts.</p>
+                <p>Get exclusive offers and new protection package alerts.</p>
                 <div class="newsletter-form">
                     <input type="email" placeholder="Your email address" id="newsletterEmailFooter">
                     <button id="subscribeNewsletterBtn">Subscribe</button>

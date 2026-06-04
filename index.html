@@ -65,11 +65,11 @@
 
         /* ----- STICKY GLASS NAVBAR (core component) ----- */
         .navbar {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            z-index: 9999 !important;
+            position: fixed ;
+            top: 0 ;
+            left: 0 ;
+            width: 100% ;
+            z-index: 9999 ;
             backdrop-filter: blur(18px);
             background: var(--surface-glass);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -103,6 +103,12 @@
             font-weight: 500;
             letter-spacing: -0.3px;
             background: linear-gradient(135deg, #1e2a3a, var(--accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        body.dark-mode .brand-name {
+            background: linear-gradient(135deg, #ffffff, var(--accent));
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -695,7 +701,7 @@
         .hero-title {
             font-family: var(--serif-font);
             font-size: var(--fluid-h1);
-            font-weight: 300;
+            font-weight: 400;
             font-style: italic;
             line-height: 1.1;
             margin-bottom: 2.5rem;
@@ -790,6 +796,10 @@
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 1rem;
+        }
+
+        .fleet-content a {
+            color: #fff;
         }
 
         /* 3. Bento Specs */
@@ -1128,6 +1138,12 @@
             background: linear-gradient(to right, var(--bg-secondary) 20%, rgba(255,255,255,0.8) 100%), url('images/showroom.png') center/cover;
             border-color: rgba(0,0,0,0.05);
         }
+        body:not(.dark-mode) .showroom-bridge h2 {
+            color: var(--text-primary) ;
+        }
+        body:not(.dark-mode) .showroom-bridge p {
+            color: var(--text-secondary) ;
+        }
 
         body:not(.dark-mode) #contactHome input {
             background: #fff;
@@ -1215,9 +1231,9 @@
     <!-- 1. HERO SECTION: IMMERSIVE MOTION -->
     <section class="home-hero">
         <div class="home-container">
-            <p class="hero-subtitle" data-aos="fade-up">Precision Engineering • Pure Adrenaline</p>
+            <p class="hero-subtitle" data-aos="fade-up">Precision Protection • Pure Preservation</p>
             <h1 class="hero-title">Beyond<br>Velocity</h1>
-            <a href="#fleet" class="cta-btn">Explore The Fleet <i class="fas fa-chevron-right"></i></a>
+            <a href="#fleet" class="cta-btn">Explore Our Services <i class="fas fa-chevron-right"></i></a>
         </div>
     </section>
 
@@ -1228,20 +1244,20 @@
         <div class="home-container">
             <div class="stats-inner">
                 <div class="stat-item">
-                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="1240" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
-                    <span class="stat-label">Max Horsepower</span>
+                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="99" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
+                    <span class="stat-label">UV Rays Blocked</span>
                 </div>
                 <div class="stat-item">
-                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="1.82" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
-                    <span class="stat-label">Seconds (0-100)</span>
+                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="10" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
+                    <span class="stat-label">Years Durability</span>
                 </div>
                 <div class="stat-item">
-                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="435" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
-                    <span class="stat-label">Top Speed km/h</span>
+                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="70" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
+                    <span class="stat-label">Heat Reduction</span>
                 </div>
                 <div class="stat-item">
-                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="28" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
-                    <span class="stat-label">Global Patents</span>
+                    <div style="display: flex; justify-content: center; align-items: baseline; margin-bottom: 0.5rem;"><span class="stat-num" data-val="500" style="margin-bottom: 0; display: inline-block;">0</span><span style="font-size: 4rem; font-weight: 950; color: var(--accent); line-height: 1; margin-left: 5px;">+</span></div>
+                    <span class="stat-label">5-Star Reviews</span>
                 </div>
             </div>
         </div>
@@ -1250,35 +1266,35 @@
     <section class="home-section" id="fleet">
         <div class="home-container">
             <div style="text-align: center; margin-bottom: 6rem;">
-                <span style="color: var(--text-primary) !important; font-weight: 500; text-transform: uppercase; letter-spacing: 4px;">Elite Collection</span>
-                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 1rem; font-weight: 500; line-height: 1; color: var(--text-primary) !important;">Masterpieces In Motion</h2>
+                <span style="color: var(--text-primary) !important; font-weight: 500; text-transform: uppercase; letter-spacing: 4px;">Elite Protection</span>
+                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-top: 1rem; font-weight: 500; line-height: 1; color: var(--text-primary) !important;">Ultimate Surface Defense</h2>
             </div>
             <div class="fleet-grid">
                 <div class="fleet-card">
-                    <img src="images/fleet_1.png" alt="Velocity V1" class="fleet-img">
+                    <img src="images/tint_installation.png" alt="Velocity V1" class="fleet-img">
                     <div class="fleet-content">
-                        <span style="color: var(--accent); font-weight: 500; font-size: 0.8rem;">HYPERCAR SERIES</span>
-                        <h3>V1 Dominator</h3>
-                        <p>A carbon-fiber heart beating with 1,200HP. Redefining what's possible on four wheels.</p>
-                        <a href="#" style="color: #fff; text-decoration: none; font-weight: 500; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">Configure Specs</a>
+                        <span style="color: var(--accent); font-weight: 500; font-size: 0.8rem;"></span>
+                        <h3>UV & Heat Rejection</h3>
+                        <p>Block 99% of harmful UV rays, reduce interior heat, and enhance privacy with our premium ceramic window tints.</p>
+                        <a href="#" style="text-decoration: none; font-weight: 500; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">View Tint Options</a>
                     </div>
                 </div>
                 <div class="fleet-card">
-                    <img src="images/fleet_2.png" alt="Grand Tourer" class="fleet-img">
+                    <img src="images/ppf_application.png" alt="Grand Tourer" class="fleet-img">
                     <div class="fleet-content">
-                        <span style="color: var(--accent); font-weight: 500; font-size: 0.8rem;">ELECTRIC FUTURE</span>
-                        <h3>GT-Volt Apex</h3>
-                        <p>Silent power. Instant torque. The first electric grand tourer that speaks to the soul.</p>
-                        <a href="#" style="color: #fff; text-decoration: none; font-weight: 500; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">View Journey</a>
+                        <span style="color: var(--accent); font-weight: 500; font-size: 0.8rem;"></span>
+                        <h3>Invisible Armor Shield</h3>
+                        <p>Protect your vehicle's paint from rock chips, scratches, and road debris with self-healing, crystal-clear PPF.</p>
+                        <a href="#" style="text-decoration: none; font-weight: 500; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">Protect Your Paint</a>
                     </div>
                 </div>
                 <div class="fleet-card">
-                    <img src="images/engineering.png" alt="Aero Concept" class="fleet-img">
+                    <img src="images/ceramic_coating.png" alt="Aero Concept" class="fleet-img">
                     <div class="fleet-content">
-                        <span style="color: var(--accent); font-weight: 500; font-size: 0.8rem;">CONCEPT LAB</span>
-                        <h3>Project X-Aero</h3>
-                        <p>A glimpse into the next decade. Active aerodynamics that breathe with the wind.</p>
-                        <a href="#" style="color: #fff; text-decoration: none; font-weight: 500; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">Laboratory Notes</a>
+                        <span style="color: var(--accent); font-weight: 500; font-size: 0.8rem;"></span>
+                        <h3>Liquid Glass Gloss</h3>
+                        <p>Achieve unmatched gloss, hydrophobicity, and long-lasting chemical resistance that makes maintenance effortless.</p>
+                        <a href="#" style="text-decoration: none; font-weight: 500; border-bottom: 2px solid var(--accent); padding-bottom: 4px; display: inline-block; margin-top: 1.5rem;">Explore Coatings</a>
                     </div>
                 </div>
             </div>
@@ -1292,31 +1308,31 @@
                 <div class="bento-item bento-1">
                     <i class="fas fa-microchip"></i>
                     <div>
-                        <h3>NeuralDrive AI</h3>
-                        <p>Our proprietary AI adapts suspension, torque vectoring, and interior acoustics to your biometric state in real-time.</p>
+                        <h3>Self-Healing Technology</h3>
+                        <p>Our premium PPF features self-healing top coats that make minor scratches and swirl marks disappear with heat.</p>
                     </div>
                 </div>
                 <div class="bento-item bento-2">
                     <i class="fas fa-wind"></i>
                     <div>
-                        <h3>Atmospheric Control</h3>
-                        <p>Active aero components that adjust 100 times per second for perfect balance at any speed.</p>
+                        <h3>Maximum Heat Rejection</h3>
+                        <p>Our nano-ceramic tints reject up to 98% of infrared heat, keeping your cabin cool and comfortable.</p>
                     </div>
                 </div>
                 <div class="bento-item bento-3">
                     <i class="fas fa-bolt"></i>
-                    <h3>800V Architecture</h3>
+                    <h3>Hydrophobic Shield</h3>
                 </div>
                 <div class="bento-item bento-4">
                     <i class="fas fa-gem"></i>
                     <div>
-                        <h3>Artisanal Finish</h3>
-                        <p>Interiors hand-stitched by master craftsmen using sustainably sourced aerospace materials.</p>
+                        <h3>Flawless Prep & Polish</h3>
+                        <p>Every vehicle undergoes meticulous paint correction before any film or coating is applied for a perfect finish.</p>
                     </div>
                 </div>
                 <div class="bento-item bento-5">
                     <i class="fas fa-shield-alt"></i>
-                    <h3>Quantum Shield</h3>
+                    <h3>Lifetime Warranties</h3>
                 </div>
             </div>
         </div>
@@ -1328,22 +1344,22 @@
         <div class="home-container">
             <div class="innovation-split">
                 <div class="innov-content">
-                    <h2 style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; margin-bottom: 2.5rem; font-weight: 500;">Obsessed With <span style="color: var(--accent); font-style: italic;">Perfection</span></h2>
-                    <p style="font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.6;">At Velocity, we don't follow trends. We create the benchmarks that the industry chases. Every curve is calculated, every stitch is intentional.</p>
+                    <h2 style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; margin-bottom: 2.5rem; font-weight: 500;">Obsessed With <span style=\"color: var(--accent); font-style: italic;\">Protection</span></h2>
+                    <p style="font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.6;">At Velocity, we don't just wash cars. We preserve and protect your investment. Every detail is calculated, every film installation is intentional to ensure a flawless finish.</p>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
                         <div>
-                            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Chassis</h4>
-                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Full carbon fiber monocoque for ultimate rigidity and lightness.</p>
+                            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Mobile Service</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">We offer fully equipped mobile detailing and tinting services right at your driveway or office.</p>
                         </div>
                         <div>
-                            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Interface</h4>
-                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Holographic cockpit display with gesture-based controls.</p>
+                            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Paint Correction</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Multi-stage machine polishing to remove swirls and scratches before applying protection.</p>
                         </div>
                     </div>
                     <a href="#" class="cta-btn" style="margin-top: 3rem; background: transparent; border: 2px solid var(--accent); color: var(--accent);">Learn Our Process</a>
                 </div>
                 <div class="innov-img-box">
-                    <img src="images/hero.png" alt="Engineering Innovation">
+                    <img src="images/mobile_service.png" alt="Engineering Innovation">
                 </div>
             </div>
         </div>
@@ -1359,12 +1375,12 @@
             </div>
             <div class="review-grid">
                 <div class="review-card">
-                    <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 2.5rem; color: var(--text-primary);">"I've owned every major supercar on the market. Nothing compares to the V1's ability to make you feel like the"</p>
-                    <div style="text-align: right;"><strong style="display: block;">Alexander Thorne</strong><span style="font-size: 0.8rem; color: var(--accent); text-transform: uppercase;">Tech Entrepreneur</span></div>
+                    <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 2.5rem; color: var(--text-primary);">"I've trusted Velocity with my last three cars. The ceramic coating makes washing a breeze and the tint keeps the heat out perfectly!"</p>
+                    <div style="text-align: left;"><strong style="display: block;">Michael Chang</strong><span style="font-size: 0.8rem; color: var(--accent); text-transform: uppercase;">Tesla Model S Owner</span></div>
                 </div>
                 <div class="review-card">
-                    <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 2.5rem; color: var(--text-primary);">"The GT-Volt is a masterpiece of design. It's the first time I've felt that luxury and sustainability weren't at odds, but rather perfectly synthesized."</p>
-                    <div style="text-align: right;"><strong style="display: block;">Helena Rossi</strong><span style="font-size: 0.8rem; color: var(--accent); text-transform: uppercase;">F1 Pilot</span></div>
+                    <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 2.5rem; color: var(--text-primary);">"Their PPF installation is truly invisible. I had my entire front end protected and you can't even tell it's there. Absolute lifesaver against rock chips."</p>
+                    <div style="text-align: left;"><strong style="display: block;">Sarah Jenkins</strong><span style="font-size: 0.8rem; color: var(--accent); text-transform: uppercase;">Porsche 911 Owner</span></div>
                 </div>
             </div>
         </div>
@@ -1395,7 +1411,7 @@
                     <i class="fas fa-car-side logo-icon" style="color: var(--accent); font-size: 1.8rem; margin-right: 0.8rem;"></i>
                     <span class="brand-name" style="font-weight: 500; letter-spacing: 2px; font-size: 1.5rem;">VELOCITY</span>
                 </div>
-                <p>Redefining automotive passion with cutting-edge engineering and bespoke concierge services. Drive the extraordinary.</p>
+                <p>Redefining automotive care with cutting-edge paint protection, ceramic coatings, and premium window tinting. Preserve the extraordinary.</p>
                 <div class="social-links">
                     <a href="#" style="text-decoration: none;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" style="text-decoration: none;" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -1427,7 +1443,7 @@
             </div>
             <div class="footer-col">
                 <h4>Newsletter</h4>
-                <p>Get exclusive offers and new model alerts.</p>
+                <p>Get exclusive offers and new protection package alerts.</p>
                 <div class="newsletter-form">
                     <input type="email" placeholder="Your email address" id="newsletterEmailFooter">
                     <button id="subscribeNewsletterBtn">Subscribe</button>

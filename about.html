@@ -108,6 +108,12 @@
             -webkit-background-clip: text;
             color: transparent;
         }
+        body.dark-mode .brand-name {
+            background: linear-gradient(135deg, #ffffff, var(--accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
 
         /* Desktop Navigation â€” clean & minimal */
         .nav-links {
@@ -616,7 +622,7 @@
         .hero-title {
             font-family: var(--serif-font);
             font-size: var(--fluid-h1);
-            font-weight: 300;
+            font-weight: 400;
             font-style: italic;
             line-height: 0.8;
             margin-bottom: 2.5rem;
@@ -834,7 +840,7 @@
             left: -8px;
         }
 
-        /* 7. Experience - Concierge (Carbon Fiber Pattern) */
+        /* 7. Experience - Concierge (Self-Healing Fiber Pattern) */
         .concierge-section {
             background: 
                 linear-gradient(30deg, #0a0c10 12%, transparent 12.5%, transparent 87%, #0a0c10 87.5%, #0a0c10),
@@ -962,15 +968,20 @@
             text-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
         }
         body.dark-mode .hero-title {
-            background: linear-gradient(to bottom, #fff 40%, var(--accent) 100%) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            color: transparent !important;
-            text-shadow: none !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: initial !important;
+            color: #ffffff !important;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8) !important;
         }
 
         .hero-subtitle {
             color: var(--accent) !important;
+        }
+        body.dark-mode .hero-subtitle {
+            color: #ffffff !important;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 0 5px var(--accent) !important;
+            font-weight: 500 !important;
         }
 
         .hero-glass-card {
@@ -1319,7 +1330,7 @@
             <div class="hero-text-content">
                 <span class="hero-subtitle">EST. 2005</span>
                 <h1 class="hero-title">Beyond the <br>Limit.</h1>
-                <p style="font-size: 1.25rem; color: #000; font-weight: 500; margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">Velocity is more than a brand; it's a movement of automotive perfectionists dedicated to the art of the drive.</p>
+                <p style="font-size: 1.25rem; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">Velocity is more than a brand; it's a movement of automotive perfectionists dedicated to the art of vehicle preservation and premium protection.</p>
                 <a href="#about-philosophy" class="login-btn" style="padding: 1.2rem 3rem; text-decoration: none; display: inline-block;">Discover Our DNA</a>
             </div>
         </div>
@@ -1372,7 +1383,7 @@
                 <div class="philosophy-card">
                     <i class="fas fa-fire-alt"></i>
                     <h3>Passion</h3>
-                    <p>Driven by the roar of the engine and the thrill of the open road. Performance is our heartbeat.</p>
+                    <p>Driven by the roar of the engine and the thrill of the open road. Protection is our heartbeat.</p>
                 </div>
             </div>
         </div>
@@ -1389,7 +1400,7 @@
             <div class="eng-feature">
                 <i class="fas fa-check-circle"></i>
                 <div>
-                    <h4>Aerodynamic Synthesis</h4>
+                    <h4>Glossdynamic Synthesis</h4>
                     <p style="font-size: 0.9rem; color: var(--text-secondary);">Redefining drag coefficients through computational fluid dynamics.</p>
                 </div>
             </div>
@@ -1397,7 +1408,7 @@
                 <i class="fas fa-check-circle"></i>
                 <div>
                     <h4>Weight-to-Power Optimization</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Carbon fiber composites for maximum structural integrity with minimum mass.</p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Self-Healing fiber composites for maximum structural integrity with minimum mass.</p>
                 </div>
             </div>
         </div>
@@ -1456,7 +1467,7 @@
     <!-- SECTION 7: QUOTE -->
     <section class="about-section" style="background: var(--bg-secondary);">
         <div class="about-container" style="text-align: center;">
-            <h2 style="font-style: italic; font-weight: 300; font-size: 2.2rem; max-width: 900px; margin: 0 auto;">"We don't just build cars. We build the extensions of the driver's soul. If it doesn't make your heart race, it isn't a Velocity."</h2>
+            <h2 style="font-style: italic; font-weight: 400; font-size: 2.2rem; max-width: 900px; margin: 0 auto;">"We don't just build cars. We build the extensions of the driver's soul. If it doesn't make your heart race, it isn't a Velocity."</h2>
             <p style="margin-top: 2rem; font-weight: 500; letter-spacing: 2px; color: var(--accent);">â€” MARCO VINCENZO, FOUNDER</p>
         </div>
     </section>
@@ -1480,7 +1491,7 @@
                     <i class="fas fa-car-side logo-icon" style="color: var(--accent); font-size: 1.8rem; margin-right: 0.8rem;"></i>
                     <span class="brand-name" style="font-weight: 500; letter-spacing: 2px; font-size: 1.5rem;">VELOCITY</span>
                 </div>
-                <p>Redefining automotive passion with cutting-edge engineering and bespoke concierge services. Drive the extraordinary.</p>
+                <p>Redefining automotive care with cutting-edge paint protection, ceramic coatings, and premium window tinting. Preserve the extraordinary.</p>
                 <div class="social-links">
                     <a href="#" style="text-decoration: none;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" style="text-decoration: none;" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -1512,7 +1523,7 @@
             </div>
             <div class="footer-col">
                 <h4>Newsletter</h4>
-                <p>Get exclusive offers and new model alerts.</p>
+                <p>Get exclusive offers and new protection package alerts.</p>
                 <div class="newsletter-form">
                     <input type="email" placeholder="Your email address" id="newsletterEmailFooter">
                     <button id="subscribeNewsletterBtn">Subscribe</button>

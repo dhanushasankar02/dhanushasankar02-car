@@ -620,12 +620,14 @@
         .gal-hero-title {
             font-family: var(--serif-font);
             font-size: var(--fluid-h1);
-            font-weight: 300;
+            font-weight: 400;
             font-style: italic;
             line-height: 0.8;
             color: #fff;
             opacity: 1;
             margin: 0;
+            padding-right: 0.3em; /* Prevents italic 'y' from being clipped */
+            padding-bottom: 0.1em;
             background: linear-gradient(to bottom, #fff 40%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -723,6 +725,11 @@
             background: var(--bg-secondary);
             margin-bottom: 4rem;
             align-items: center;
+        }
+
+        .exp-content {
+            padding: 4rem;
+            box-sizing: border-box;
         }
 
         /* 7. Motion Blur Gallery */
@@ -826,6 +833,7 @@
             .social-links, .newsletter-form { justify-content: center; }
             .macro-grid { grid-template-columns: 1fr; }
             .motion-row { grid-template-columns: repeat(2, 1fr); }
+            .exp-content { padding: 2.5rem 1.5rem; text-align: center; }
         }
 
         @media (max-width: 480px) {
@@ -842,6 +850,7 @@
         }
             .final-exp { padding: 60px 1.2rem; }
             .bento-1, .bento-2 { height: 280px; }
+            .exp-content { padding: 1.5rem 1rem; }
         }
 
         @media (max-width: 320px) {
@@ -1227,7 +1236,7 @@
         <div class="gal-container">
             <div class="exp-card">
                 <div style="height: 500px;"><img src="images/showroom.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
-                <div style="padding: 4rem;">
+                <div class="exp-content">
                     <span style="color: var(--accent); font-weight: 500;">Expedition: Dubai</span>
                     <h2 style="font-size: 3rem; margin: 1rem 0;">Dune Runners</h2>
                     <p style="color: var(--text-secondary); margin-bottom: 2rem;">Capturing the V-Dominator as it cuts through the desert heat of the United Arab Emirates.</p>
